@@ -1,0 +1,28 @@
+{
+  "name": "ph-7/link2payment",
+  "description": "Get your Stripe/PayPal payment link to get paid everywhere, in emails, on a non-SSL website, donation, from a ebook, on a book (by just displaying the payment link, ...)",
+  "keywords": ["payment", "stripe", "link", "link payment", "stripe payment", "paypal", "share link payment", "stripe donation", "donation", "donate"],
+  "type": "project",
+  "homepage": "http://ph7.me",
+  "license": "GPL-3.0+",
+  "authors": [
+    {
+      "name": "Pierre-Henry Soria",
+      "email": "hi@ph7.me",
+      "homepage": "http://about.ph7.me"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "vlucas/phpdotenv": "^2.4",
+    "adamwathan/form": "^0.9.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\": "app/Core"
+    }
+  }
+}

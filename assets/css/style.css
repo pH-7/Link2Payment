@@ -1,0 +1,70 @@
+/*
+ * Author:        Pierre-Henry Soria <hi@ph7.me>
+ * Copyright:     (c) 2017, Pierre-Henry Soria. All Rights Reserved.
+ * License:       GNU General Public License; See PH7.LICENSE.txt and PH7.COPYRIGHT.txt in the root directory.
+ */
+
+.flag.icon, .gender.icon {
+    max-width: 100%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.flag.icon, .destination, .age-range, .lifestyle-topic, .education, .saving, .job-type, .availability {
+    display: inline-block;
+}
+
+.destination, .age-range, .lifestyle-topic, .education, .saving, .job-type, .availability {
+    font-weight: bold;
+    margin: 10px;
+}
+
+.destination, .lifestyle-topic, .education, .job-type {
+    font-size: 1rem;
+}
+
+.age-range, .saving, .availability {
+    font-size: 2.5rem;
+}
+
+.container .center form, .bottom-margin {
+    margin-bottom: 50px;
+}
+
+.post-button {
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.small {
+    font-size: x-small;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+abbr {
+    border-bottom: 1px dotted #666;
+    text-transform: none;
+}
+
+.hidden, .nofield {
+    display: none;
+}
+
+img, video, iframe {
+    max-width: 100%;
+}

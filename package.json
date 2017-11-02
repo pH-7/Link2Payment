@@ -1,0 +1,17 @@
+{
+  "name": "MyDreamLife",
+  "version": "1.0.0",
+  "description": "DreamLife tries to give the right way and tips to anyone who wants to change their life",
+  "main": "index.js",
+  "dependencies": {
+    "flag-icon-css": "^2.8.0",
+    "material-icons": "^0.1.0",
+    "materialize-css": "^0.100.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pierre-Henry Soria",
+  "license": "GPL-3.0"
+}
