@@ -30,6 +30,8 @@
           <li><a href="<?php echo site_url('signup') ?>" class="yellow-text bold underline">Sign Up</a></li>
           <li><a href="<?php echo site_url('signin') ?>">Sign In</a></li>
         <?php else: ?>
+          <li><a href="<?php echo site_url('edit') ?>">Edit Details</a></li>
+          <li><a href="<?php echo site_url('password') ?>">Change Password</a></li>
           <li><a href="<?php echo site_url('signout') ?>">Sign Out</a></li>
         <?php endif ?>
       </ul>
