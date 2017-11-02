@@ -10,28 +10,32 @@ declare(strict_types = 1);
 namespace PH7App\Controller;
 
 use PH7App\Core\View;
-use PH7App\Model\Payment;
+use PH7App\Model\Payment as PaymentModel;
 use PH7App\Core\Input;
 
-class Home extends Base
+class Payment extends Base
 {
     public function stripe(): void
     {
         $hash = Input::get('id');
-        $dbData = Payment::getPaymentInfo($hash);
+        $dbData = PaymentModel::getPaymentInfo($hash);
 
-        $tplVars = [
-            'payment_gateway' => $dbData->paymentGateway,
-            'businessName' => $dbData->business_name,
-            'publishable_key' => $dbData->publishable_key,
-            'item_name' => $dbData->itemName,
-            'amount' => $dbData->amount,
-            'currency' => $dbData->currency,
-            'is_bitcoin' => $dbData->isBitcoin,
-            'hash' => $dbData->hash
-        ];
+        if (!empty($dbData)) {
+            $tplVars = [
+                'payment_gateway' => $dbData->paymentGateway,
+                'businessName' => $dbData->business_name,
+                'publishable_key' => $dbData->publishable_key,
+                'item_name' => $dbData->itemName,
+                'amount' => $dbData->amount,
+                'currency' => $dbData->currency,
+                'is_bitcoin' => $dbData->isBitcoin,
+                'hash' => $dbData->hash
+            ];
 
-        View::create('forms/stripe', $dbData->businessName, $tplVars);
+            View::create('forms/stripe', $dbData->businessName, $tplVars);
+        } else {
+            $this->notFound();
+        }
     }
 
     public function checkout(): void
@@ -53,6 +57,8 @@ class Home extends Base
 
             $this->sendEmailToSeller();
             $this->sendEmailToBuyer();
+
+            View::create('payment-done', 'Payment Done');
         }
         catch (\Stripe\Error\Card $oE) {
             // The card has been declined

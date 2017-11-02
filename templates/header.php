@@ -26,7 +26,12 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
       <ul id="nav-mobile" class="right">
-        <li><a href="<?php echo site_url('forum') ?>" class="yellow-text bold underline">Forum</a></li>
+        <?php if (!Core\User::isLoggedIn()): ?>
+          <li><a href="<?php echo site_url('signup') ?>" class="yellow-text bold underline">Sign Up</a></li>
+          <li><a href="<?php echo site_url('signin') ?>">Sign In</a></li>
+        <?php else: ?>
+          <li><a href="<?php echo site_url('signout') ?>">Sign Out</a></li>
+        <?php endif ?>
       </ul>
     </div>
   </nav>
@@ -34,7 +39,7 @@
   <?php if (Core\Route::isHomepage()): ?>
       <header class="section no-pad-bot" id="index-banner">
         <div class="container">
-          <h1 class="header center orange-text"><?= $title ?></h1>
+          <h2 class="header center orange-text">Get Stripe Payment Link</h2>
           <div class="row center">
             <h5 class="header col s12 light">Get paid with a simple payment link to share anywhere</h5>
           </div>

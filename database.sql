@@ -12,6 +12,7 @@ CREATE TABLE user (
   isTwoFactorAuth enum('1','0') DEFAULT '0',
   twoFactorAuthSecret varchar(40) DEFAULT NULL,
   UNIQUE KEY (hash),
+  UNIQUE KEY (email),
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

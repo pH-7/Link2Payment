@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author         Pierre-Henry Soria <hi@ph7.me>
+ * @copyright      (c) 2017, Pierre-Henry Soria. All Rights Reserved.
+ * @license        GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
+ */
 
 declare(strict_types = 1);
 
@@ -38,7 +43,11 @@ class Session
      */
     public static function destroy(): void
     {
-        session_destroy();
+        if (!empty($_SESSION)) {
+            $_SESSION = [];
+            session_unset();
+            session_destroy();
+        }
     }
 
     /**
@@ -59,7 +68,14 @@ class Session
      */
     public static function removeCookie(string $name): void
     {
+        // If the cookie is in a multi-dimensional arrays
+        $_COOKIE[$name] = [];
+
+        // We ask the browser to delete the cookie
         setcookie($name, '', time() - 60 * 60 * 24 * 365, '/', false);
+
+        // Then, we delete the cookie value locally to avoid using it by mistake in following our script
+        unset($_COOKIE[$name]);
     }
 
     /**

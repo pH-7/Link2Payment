@@ -15,15 +15,20 @@ class Payment
 {
     private const TABLE_NAME = 'payment';
 
-    public static function getPaymentInfo(string $hash): void
+    /**
+     * @param mixed $hash
+     *
+     * @return bool|\stdClass
+     */
+    public static function getPaymentInfo($hash)
     {
-        Database::query('SELECT * FROM user AS u INNER JOIN payment AS p USING(userId) WHERE u.hash = :hash LIMIT 1');
+        Database::query('SELECT * FROM user AS u INNER JOIN payment AS p USING(userId) WHERE u.hash = :hash LIMIT 1', ['hash' => $hash]);
 
         return Database::fetch();
     }
 
     public static function insert(array $binds): void
     {
-        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (publishableKey, secretKey, businessName, itemName, currency, amount) VALUES(:publishable_key, :secret_key, :business_name, :item_name, :currency, :amount)', $binds);
+        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (userId, publishableKey, secretKey, businessName, itemName, currency, amount) VALUES(:user_id, :publishable_key, :secret_key, :business_name, :item_name, :currency, :amount)', $binds);
     }
 }

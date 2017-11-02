@@ -1,3 +1,5 @@
+<?php namespace PH7App; ?>
+
 <div class="createAcc">
     <div class="container">
         <div class="row">

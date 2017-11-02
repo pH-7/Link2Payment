@@ -17,11 +17,32 @@ class User
 
     public static function insert(array $binds): void
     {
-        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (email, password) VALUES(:email, :password)', $binds);
+        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (email, password, hash) VALUES(:email, :password, :hash)', $binds);
     }
 
-        public static function getPassword(array $bind): void
-        {
-            Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', $binds);
-        }
- }
+    public static function update(array $binds, string $userEmail): void
+    {
+        Database::query('UPDATE ' . self::TABLE_NAME . ' SET fullname = :fullname WHERE userId = :user_id LIMIT 1', $binds);
+    }
+
+    public static function getId(string $email): int?
+    {
+        Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
+
+        return Database::fetch()->userId;
+    }
+
+    public static function getPassword(string $email)
+    {
+        Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
+
+        return Database::fetch()->password;
+    }
+
+    public static function updatePassword(string $newPassword, int $userId): void
+    {
+        $binds = ['new_password' => $newPassword, 'user_id' => $userId];
+
+        Database::query('UPDATE ' . self::TABLE_NAME . ' SET password = :new_password WHERE userId = :user_id LIMIT 1', $binds);
+    }
+}
