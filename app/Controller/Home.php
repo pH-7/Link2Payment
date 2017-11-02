@@ -106,6 +106,8 @@ class Home extends Base
 
     public function password(): void
     {
+        $data = [];
+
         $email = User::getEmail();
         $currentPassword = Input::post('current_password');
         $password1 = Input::post('new_password');
@@ -118,16 +120,16 @@ class Home extends Base
 
                     redirect('edit');
                 } else {
-                    // TODO: Not same password
+                    $data = ['error_msg' => "The passwords don't match."];
                 }
 
             } else {
-                // TODO: Wrong current password
+                $data = ['error_msg' => "Your current password isn't correct."];
             }
         }
 
 
-        View::create('forms/password', 'Update Your Password');
+        View::create('forms/password', 'Change Your Password', $data);
     }
 
     public function signout(): void

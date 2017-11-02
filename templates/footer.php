@@ -14,11 +14,10 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text"><span class="underline">MyNewDream</span>.eu</h5>
+          <h5 class="white-text">Link<span class="underline">2</span>Payment</h5>
           <p class="grey-text text-lighten-4">
-              <a href="<?= site_url() ?>">MyNewDream</a> gives a full TODO-list and Itinerary for a new amazing life elsewhere. It is designed for European people from 18 to 30 years old (mainly from Spain, France, Netherlands, Belgium, Germany and Italy) who want to move and try a new life abroad.
-          </p>
 
+          </p>
         </div>
         <div class="col l3 s12">
             <!-- Text Block -->
@@ -31,20 +30,11 @@
     <div class="footer-copyright">
       <div class="container">
           <div class="row">
-              <div class="col l5 s6">
-                  With ♥ by <a class="orange-text text-lighten-3" href="http://ph7.me">Pierre-Henry</a>
-              </div>
-              <div class="col l4 s6">
+              <div class="col l9 s12">
                   Proud to be <a class="orange-text text-lighten-3" href="https://github.com/pH-7/MyDreamLife.eu">open source</a>
               </div>
-              <div class="col l1 s4">
-                  <a class="orange-text text-lighten-3" href="<?= site_url('posts') ?>">Posts</a>
-              </div>
-              <div class="col l1 s4">
-                  <a class="orange-text text-lighten-3" rel="nofollow noopener" target="_blank" href="<?php echo site_url('podcast') ?>" title="The Tropical MBA Podcast">Podcast</a>
-              </div>
-              <div class="col l1 s4">
-                  <a class="orange-text text-lighten-3" rel="nofollow" href="mailto:hi@ph7.me?subject=Regarding MyNewDream">Contact</a>
+              <div class="col l3 s12">
+                  <a class="orange-text text-lighten-3" rel="nofollow" href="mailto:hi@ph7.me?subject=Regarding Link2Payment">Contact</a>
               </div>
           </div>
       </div>
