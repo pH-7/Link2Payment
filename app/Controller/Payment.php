@@ -68,7 +68,7 @@ class Payment extends Base
 
         }
 
-        View::create('forms/stripe', $dbData->businessName, $tplVars);
+        View::create('forms/stripe', $dbData->businessName);
     }
 
     private function sendEmailToBuyer()
