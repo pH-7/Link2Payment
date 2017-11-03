@@ -1,9 +1,11 @@
 <?php namespace PH7App; ?>
 
+<?php include 'message.inc.php' ?>
 
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
 <?= $form->open()->action(site_url('password')) ?>
 <?= $form->token() ?>
+<?= $form->hidden('update_password')->value(1) ?>
 
 <?= $form->label('Current Password:')->forId('current_password') ?>
 <?= $form->password('current_password')->id('current_password')

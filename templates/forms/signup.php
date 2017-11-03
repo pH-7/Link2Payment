@@ -1,8 +1,11 @@
 <?php namespace PH7App; ?>
 
+<?php include 'message.inc.php' ?>
+
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
 <?= $form->open()->action(site_url('signup')) ?>
 <?= $form->token() ?>
+<?= $form->hidden('signup')->value(1) ?>
 
 <?= $form->hidden('firstname')->addClass('nofield') // Spambot prevention using a hidden field ?>
 

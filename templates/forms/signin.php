@@ -1,8 +1,11 @@
 <?php namespace PH7App; ?>
 
+<?php include 'message.inc.php' ?>
+
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
 <?= $form->open()->action(site_url('signin')) ?>
 <?= $form->token() ?>
+<?= $form->hidden('signin')->value(1) ?>
 
 <?= $form->label('Email:')->forId('email') ?>
 <?= $form->email('email')->id('email')
