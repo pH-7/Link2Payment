@@ -25,11 +25,20 @@ class User
         Database::query('UPDATE ' . self::TABLE_NAME . ' SET fullname = :fullname WHERE userId = :user_id LIMIT 1', $binds);
     }
 
-    public static function getId(string $email): int?
+    public static function getId(string $email): ?int
     {
         Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 
         return Database::fetch()->userId;
+    }
+
+    public static function doesAccountAlreadyExist(string $email): bool
+    {
+        $bind = ['email' => $email];
+
+        Database::query('SELECT COUNT(email) FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', $bind);
+
+        return Database::rowCount() > 0;
     }
 
     public static function getPassword(string $email)
