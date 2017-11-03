@@ -49,4 +49,4 @@
 <?= $form->text('business_name')->id('business')
     ->placeholder('Business Name Or Your Name')->required() ?>
 
-<?= $form->button('Sign Up')->type('submit')->name('signup')->addClass('bold orange-text') ?>
+<?= $form->submit('Sign Up')->addClass('bold waves-effect btn-large') ?>

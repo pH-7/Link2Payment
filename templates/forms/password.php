@@ -17,4 +17,4 @@
 <?= $form->password('repeated_password')->id('repeated_password')
     ->required() ?>
 
-<?= $form->button('Change Password')->type('submit')->name('update_password')->addClass('bold orange-text') ?>
+<?= $form->submit('Change Password')->addClass('bold waves-effect btn-large') ?>

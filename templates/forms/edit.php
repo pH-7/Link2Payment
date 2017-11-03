@@ -34,4 +34,4 @@
 <?= $form->text('business_name')->id('business')
     ->placeholder('Business Name Or Your Name')->required() ?>
 
-<?= $form->button('Update')->type('submit')->name('edit')->addClass('bold orange-text') ?>
+<?= $form->submit('Update')->addClass('bold waves-effect btn-large') ?>

@@ -12,4 +12,4 @@
 <?= $form->password('password')->id('password')
     ->placeholder('Your Secure Password')->required() ?>
 
-<?= $form->button('Sign In')->type('submit')->name('signin')->addClass('bold orange-text') ?>
+<?= $form->submit('Sign In')->addClass('bold waves-effect btn-large') ?>
