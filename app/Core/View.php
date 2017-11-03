@@ -13,6 +13,9 @@ use RuntimeException;
 
 class View
 {
+    const ERROR_MSG_KEY = 'error_msg';
+    const SUCCESS_MSG_KEY = 'success_msg';
+
     /**
      * @param string $view
      * @param string $title

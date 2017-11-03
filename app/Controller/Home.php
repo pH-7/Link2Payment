@@ -27,40 +27,48 @@ class Home extends Base
 
     public function signup(): void
     {
-        if (Input::post('signup')) {
+        $data = [];
+
+        if (!$this->isSpamBot() && Input::post('signup')) {
             $email = Input::post('email');
 
-            $userData = [
-                'hash' => User::generateHash(),
-                'email' => $email,
-                'password' => Password::hash(Input::post('password'))
-            ];
-            UserModel::insert($userData);
+            if (!User::doesAccountAlreadyExist($email)) {
+                $userData = [
+                    'hash' => User::generateHash(),
+                    'email' => $email,
+                    'password' => Password::hash(Input::post('password'))
+                ];
+                UserModel::insert($userData);
 
-            $userId = UserModel::getId($email);
+                $userId = UserModel::getId($email);
 
-            $paymentData = [
-                'user_id' => $userId,
-                'publishable_key' => Input::post('publishable_key'),
-                'private_key' => Input::post('private_key'),
-                'business_name' => Input::post('business_name'),
-                'item_name' => Input::post('item_name'),
-                'currency' => Input::post('currency'),
-                'amount' => Input::post('amount')
-            ];
-            PaymentModel::insert($paymentData);
+                $paymentData = [
+                    'user_id' => $userId,
+                    'publishable_key' => Input::post('publishable_key'),
+                    'private_key' => Input::post('private_key'),
+                    'business_name' => Input::post('business_name'),
+                    'item_name' => Input::post('item_name'),
+                    'currency' => Input::post('currency'),
+                    'amount' => Input::post('amount')
+                ];
+                PaymentModel::insert($paymentData);
 
-            User::setAuth($userId, $email);
+                User::setAuth($userId, $email);
 
-            redirect('edit');
+                redirect('edit');
+            } else {
+                $data = [View::ERROR_MSG_KEY => 'An account with this email address already exists. Please use another email address if you want to create another payment link.'];
+            }
         }
 
-        View::create('forms/signup', 'Register');
+        View::create('forms/signup', 'Sign In for Free!', $data);
     }
 
     public function signin(): void
     {
-        if (!$this->isSpamBot() && Input::post('signin')) {
+        $data = [];
+
+        if (Input::post('signin')) {
             $email = Input::post('email');
             $password = Input::post('password');
             $dbPasswordHashed = UserModel::getPassword($email);
@@ -68,12 +76,14 @@ class Home extends Base
             if (Password::check($password, $dbPasswordHashed)) {
                 $userId = UserModel::getId($email);
                 User::setAuth($userId, $email);
-            }
 
-            redirect('edit');
+                redirect('edit');
+            } else {
+                $data = [View::ERROR_MSG_KEY => 'Wrong email/password.'];
+            }
         }
 
-        View::create('forms/signin', 'Sign In for Free!');
+        View::create('forms/signin', 'Sign In', $data);
     }
 
     public function edit(): void
@@ -118,16 +128,14 @@ class Home extends Base
                 if ($password1 === $password2) {
                     UserModel::updatePassword($password1, User::getId());
 
-                    redirect('edit');
+                    $data = [View::SUCCESS_MSG_KEY => 'Your password has been successfully changed.'];
                 } else {
-                    $data = ['error_msg' => "The passwords don't match."];
+                    $data = [View::ERROR_MSG_KEY => "The passwords don't match."];
                 }
-
             } else {
-                $data = ['error_msg' => "Your current password isn't correct."];
+                $data = [View::ERROR_MSG_KEY => "Your current password isn't correct."];
             }
         }
-
 
         View::create('forms/password', 'Change Your Password', $data);
     }

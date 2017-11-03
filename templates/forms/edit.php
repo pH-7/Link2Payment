@@ -1,8 +1,11 @@
 <?php namespace PH7App; ?>
 
+<?php include 'message.inc.php' ?>
+
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
 <?= $form->open()->action(site_url('edit')) ?>
 <?= $form->token() ?>
+<?= $form->hidden('edit')->value(1) ?>
 
 <?= $form->label('Your Full Name:')->forId('fullname') ?>
 <?= $form->text('fullname')->id('fullname')->required() ?>
