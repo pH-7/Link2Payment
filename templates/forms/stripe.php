@@ -3,6 +3,7 @@
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
 <?= $form->open()->action(site_url('checkout')) ?>
 <?= $form->hidden('hash')->value($hash) ?>
+
 <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<?php echo $publishable_key ?>"
