@@ -11,10 +11,10 @@ namespace PH7App\Controller;
 
 use PH7App;
 use PH7App\Core\Input;
-use PH7App\Core\View;
+use PH7App\Core\Password;
 use PH7App\Core\Session;
 use PH7App\Core\User;
-use PH7App\Core\Password;
+use PH7App\Core\View;
 use PH7App\Model\Payment as PaymentModel;
 use PH7App\Model\User as UserModel;
 

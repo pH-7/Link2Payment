@@ -9,9 +9,9 @@ declare(strict_types = 1);
 
 namespace PH7App\Controller;
 
+use PH7App\Core\Input;
 use PH7App\Core\View;
 use PH7App\Model\Payment as PaymentModel;
-use PH7App\Core\Input;
 
 class Payment extends Base
 {
