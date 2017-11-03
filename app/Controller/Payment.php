@@ -9,9 +9,11 @@ declare(strict_types = 1);
 
 namespace PH7App\Controller;
 
+use PH7App;
 use PH7App\Core\Input;
 use PH7App\Core\View;
 use PH7App\Model\Payment as PaymentModel;
+use function PH7App\site_name;
 
 class Payment extends Base
 {
@@ -56,7 +58,7 @@ class Payment extends Base
             );
 
             $this->sendEmailToSeller();
-            $this->sendEmailToBuyer();
+            $this->sendEmailToBuyer(['name' => $dbData->name, 'email' => $dbData->email]);
 
             View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
         }
@@ -71,9 +73,26 @@ class Payment extends Base
         View::create('forms/stripe', $dbData->businessName);
     }
 
-    private function sendEmailToBuyer()
+    /**
+     * @param array $buyerDetails
+     *
+     * @return int The number of successful recipients. Can be 0 which indicates failure.
+     */
+    private function sendEmailToBuyer(array $buyerDetails): int
     {
+        $email = getenv('ADMIN_EMAIL');
+        $textMessage = sprintf("Hi %s!\r\n\r\n You receive a new payment made thanks %s", $buyerDetails['name'], site_name());
 
+        $transport = \Swift_MailTransport::newInstance();
+        $mailer = \Swift_Mailer::newInstance($transport);
+
+        // Create a message
+        $message = (new \Swift_Message('Wonderful Subject'))
+            ->setFrom([$email => site_name()])
+            ->setTo([$buyerDetails['email'] => $buyerDetails['name']])
+            ->setBody($textMessage);
+
+        return $mailer->send($message);
     }
 
     private function sendEmailToSeller()
