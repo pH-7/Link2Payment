@@ -27,7 +27,8 @@
     font-size: 2.5rem;
 }
 
-.container .center form, .bottom-margin {
+.container-margin {
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 

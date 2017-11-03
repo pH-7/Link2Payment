@@ -49,4 +49,4 @@
       </header>
   <?php endif ?>
 
-  <section class="container">
+  <section class="container center-block container-margin">
