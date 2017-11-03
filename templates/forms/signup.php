@@ -19,7 +19,8 @@
 
 <?= $form->label('Password:')->forId('password') ?>
 <?= $form->password('password')->id('password')
-    ->placeholder('Your Secure Password')->pattern('[\w-]{6,}')->required() ?>
+    ->placeholder('Your Secure Password')
+    ->pattern('.{6,}')->title('Password must be at least 6 characters long')->required() ?>
 
 <?= $form->label('Item Name:')->forId('item') ?>
 <?= $form->text('item_name')->id('currency')
