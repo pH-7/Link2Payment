@@ -48,7 +48,7 @@ class User
     {
         $bind = ['email' => $email];
 
-        Database::query('SELECT COUNT(email) FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', $bind);
+        Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', $bind);
 
         return Database::rowCount() > 0;
     }

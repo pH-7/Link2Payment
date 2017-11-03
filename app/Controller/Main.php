@@ -41,7 +41,7 @@ class Main extends Base
         if (!$this->isSpamBot() && Input::post('signup')) {
             $email = Input::post('email');
 
-            if (!User::doesAccountAlreadyExist($email)) {
+            if (!UserModel::doesAccountAlreadyExist($email)) {
                 $userData = [
                     'hash' => User::generateHash(),
                     'email' => $email,
