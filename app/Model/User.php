@@ -15,12 +15,24 @@ class User
 {
     private const TABLE_NAME = 'user';
 
+    /**
+     * @param mixed $hash
+     *
+     * @return bool|\stdClass
+     */
+    public static function getDetails(int $userId)
+    {
+        Database::query('SELECT * FROM user AS u INNER JOIN payment AS p USING(userId) WHERE u.hash = :hash LIMIT 1', ['userId' => $userId]);
+
+        return Database::fetch();
+    }
+
     public static function insert(array $binds): void
     {
         Database::query('INSERT INTO ' . self::TABLE_NAME . ' (email, password, hash) VALUES(:email, :password, :hash)', $binds);
     }
 
-    public static function update(array $binds, string $userEmail): void
+    public static function update(array $binds): void
     {
         Database::query('UPDATE ' . self::TABLE_NAME . ' SET fullname = :fullname WHERE userId = :user_id LIMIT 1', $binds);
     }

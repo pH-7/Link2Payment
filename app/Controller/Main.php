@@ -18,11 +18,20 @@ use PH7App\Core\Password;
 use PH7App\Model\Payment as PaymentModel;
 use PH7App\Model\User as UserModel;
 
-class Home extends Base
+class Main extends Base
 {
     public function index(): void
     {
-        View::create('homepage', 'Get your Stripe Payment Link to get paid everywhere');
+        View::create('splash-homepage', 'Get your Stripe Payment Link to get paid everywhere');
+    }
+
+    public function home(): void
+    {
+        $userId = User::getId();
+        $dbData = UserModel::getDetails($userId);
+        $tplVars = ['fullname' => $dbData->fullname, 'payment_link' => User::getPaymentLink($dbData->hash)];
+
+        View::create('home', 'Welcome!', $tplVars);
     }
 
     public function signup(): void
@@ -55,7 +64,7 @@ class Home extends Base
 
                 User::setAuth($userId, $email);
 
-                redirect('edit');
+                redirect('/');
             } else {
                 $data = [View::ERROR_MSG_KEY => 'An account with this email address already exists. Please use another email address if you want to create another payment link.'];
             }
@@ -77,7 +86,7 @@ class Home extends Base
                 $userId = UserModel::getId($email);
                 User::setAuth($userId, $email);
 
-                redirect('edit');
+                redirect('/');
             } else {
                 $data = [View::ERROR_MSG_KEY => 'Wrong email/password.'];
             }
@@ -90,28 +99,42 @@ class Home extends Base
     {
         $userId = User::getId();
 
+        $dbData = UserModel::getDetails($userId);
+
+        $tplVars = [
+            'fullname' => $dbData->fullname,
+            'publishable_key' => $dbData->publishableKey,
+            'secret_key' => $dbData->secretKey,
+            'business_name' => $dbData->businessName,
+            'item_name' => $dbData->itemName,
+            'currency' => $dbData->currency,
+            'amount' => $dbData->amount,
+            'is_bitcoin' => $dbData->isBitcoin
+        ];
+
         if (Input::post('signup')) {
             $userData = [
                 'user_id' => $userId,
                 'fullname' => Input::post('fullname')
             ];
-            UserModel::update($userData, $userId);
+            UserModel::update($userData);
 
             $paymentData = [
                 'user_id' => $userId,
                 'publishable_key' => Input::post('publishable_key'),
                 'secret_key' => Input::post('secret_key'),
-                'fullname' => Input::post('fullname'),
                 'business_name' => Input::post('business_name'),
                 'item_name' => Input::post('item_name'),
                 'currency' => Input::post('currency'),
-                'amount' => Input::post('amount')
+                'amount' => Input::post('amount'),
+                'is_bitcoin' => Input::post('is_bitcoin')
             ];
-            PaymentModel::update($paymentData, $userId);
+            PaymentModel::update($paymentData);
 
+            $tplVars = [View::SUCCESS_MSG_KEY => 'Details successfully updated!'];
         }
 
-        View::create('forms/edit', 'Edit Your Details');
+        View::create('forms/edit', 'Edit Your Details', $tplVars);
     }
 
     public function password(): void

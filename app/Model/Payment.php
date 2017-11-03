@@ -29,6 +29,11 @@ class Payment
 
     public static function insert(array $binds): void
     {
-        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (userId, publishableKey, secretKey, businessName, itemName, currency, amount) VALUES(:user_id, :publishable_key, :secret_key, :business_name, :item_name, :currency, :amount)', $binds);
+        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (userId, publishableKey, secretKey, businessName, itemName, currency, amount, isBitcoin) VALUES(:user_id, :publishable_key, :secret_key, :business_name, :item_name, :currency, :amount, :is_bitcoin)', $binds);
+    }
+
+    public static function update(array $binds): void
+    {
+        Database::query('UPDATE ' . self::TABLE_NAME . ' SET publishableKey = :publishableKey, secretKey = :secretKey, businessName = :businessName, itemName = :itemName, currency = :currency, amount = :amount WHERE userId = :user_id LIMIT 1', $binds);
     }
 }

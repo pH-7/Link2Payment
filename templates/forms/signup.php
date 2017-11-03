@@ -19,7 +19,7 @@
 
 <?= $form->label('Password:')->forId('password') ?>
 <?= $form->password('password')->id('password')
-    ->placeholder('Your Secure Password')->required() ?>
+    ->placeholder('Your Secure Password')->pattern('[\w-]{6,}')->required() ?>
 
 <?= $form->label('Item Name:')->forId('item') ?>
 <?= $form->text('item_name')->id('currency')
@@ -40,6 +40,10 @@
 <?= $form->select('currency', $currencies)
     ->id('currency') ?>
 
+<?= $form->label('Amount:')->forId('amount') ?>
+<?= $form->number('amount')->step('0.01')->id('amount')
+    ->placeholder('99.99')->required() ?>
+
 <?= $form->label('Stripe Publishable Key:')->forId('publishable_key') ?>
 <?= $form->text('publishable_key')->id('publishable_key')
     ->required() ?>
@@ -47,9 +51,5 @@
 <?= $form->label('Stripe Secret Key:')->forId('secret_key') ?>
 <?= $form->text('secret_key')->id('secret_key')
     ->required() ?>
-
-<?= $form->label('Business Name:')->forId('business') ?>
-<?= $form->text('business_name')->id('business')
-    ->placeholder('Business Name Or Your Name')->required() ?>
 
 <?= $form->submit('Sign Up')->addClass('bold waves-effect btn-large') ?>

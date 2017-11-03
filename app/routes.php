@@ -10,16 +10,21 @@ namespace PH7App;
 use PH7App\Core\User;
 use PH7App\Core\Route;
 
-Route::get('/', 'Home@index');
-Route::getAndPost('/signup', 'Home@signup');
-Route::getAndPost('/signin', 'Home@signin');
+if (!User::isLoggedIn()) {
+    Route::get('/', 'Main@index');
+} else {
+    Route::getAndPost('/', 'Main@home'); // Only for logged in users
+}
+
+Route::getAndPost('/signup', 'Main@signup');
+Route::getAndPost('/signin', 'Main@signin');
 Route::post('/stripe', 'Payment@stripe');
 Route::post('/checkout', 'Payment@checkout');
 
-if (User::isLoggedIn()) { // Available only for logged in users
-    Route::getAndPost('/edit', 'Home@edit');
-    Route::getAndPost('/password', 'Home@password');
-    Route::getAndPost('/signout', 'Home@signout');
+if (User::isLoggedIn()) { // Only for logged in users
+    Route::getAndPost('/edit', 'Main@edit');
+    Route::getAndPost('/password', 'Main@password');
+    Route::getAndPost('/signout', 'Main@signout');
 }
 
 // Redirection

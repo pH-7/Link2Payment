@@ -13,7 +13,7 @@ CREATE TABLE user (
   twoFactorAuthSecret varchar(40) DEFAULT NULL,
   UNIQUE KEY (hash),
   UNIQUE KEY (email),
-  PRIMARY KEY (id)
+  PRIMARY KEY (userId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -27,6 +27,6 @@ CREATE TABLE payment (
   currency char(3) NOT NULL DEFAULT 'USD',
   amount decimal(8, 2) NOT NULL DEFAULT '0.00',
   isBitcoin tinyint(1) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id) REFERENCES user(id)
+  PRIMARY KEY (userId),
+  FOREIGN KEY (userId) REFERENCES user(userId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

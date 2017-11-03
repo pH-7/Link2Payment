@@ -26,7 +26,7 @@ final class Password
     /**
      * Generate Random Salt for Password encryption.
      *
-     * @param string $password
+     * @param string|null $password
      *
      * @return string The Hash Password
      */
@@ -35,7 +35,13 @@ final class Password
         return password_hash($password, self::PWD_ALGORITHM, self::$options);
     }
 
-    public static function check(string $password, string $hash): bool
+    /**
+     * @param string|null $password
+     * @param string|null $hash
+     *
+     * @return bool
+     */
+    public static function check($password, $hash): bool
     {
         return password_verify($password, $hash);
     }

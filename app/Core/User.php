@@ -9,6 +9,7 @@ declare(strict_types = 1);
 
 namespace PH7App\Core;
 
+use PH7App;
 use PH7App\Core\Session;
 
 class User
@@ -37,5 +38,10 @@ class User
     public static function generateHash(): string
     {
         return md5(uniqid(mt_rand(), true));
+    }
+
+    public static function getPaymentLink(string $hash): string
+    {
+        return site_url("s/$hash");
     }
 }
