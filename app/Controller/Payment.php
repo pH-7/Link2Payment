@@ -41,7 +41,7 @@ class Payment extends Base
     public function checkout(): void
     {
         $hash = Input::post('id');
-        $dbData = Payment::getPaymentInfo($hash);
+        $dbData = PaymentModel::getPaymentInfo($hash);
 
         \Stripe\Stripe::setApiKey($dbData->secretKey);
 
@@ -58,7 +58,7 @@ class Payment extends Base
             $this->sendEmailToSeller();
             $this->sendEmailToBuyer();
 
-            View::create('payment-done', 'Payment Done');
+            View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
         }
         catch (\Stripe\Error\Card $oE) {
             // The card has been declined
