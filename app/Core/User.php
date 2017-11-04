@@ -34,9 +34,13 @@ class User
         return Session::get('email');
     }
 
+    /**
+     * @return string Returns a unique 32 character string.
+     */
     public static function generateHash(): string
     {
-        return md5(uniqid(mt_rand(), true));
+        $prefix = 'a' . mt_rand();
+        return md5(uniqid($prefix, true));
     }
 
     public static function getPaymentLink(string $hash): string
