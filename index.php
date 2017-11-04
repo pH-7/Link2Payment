@@ -5,6 +5,16 @@
  * @license        GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
  */
 
+namespace PH7App;
+
+require 'app/Bootstrap.php';
+
 ob_start();
-require 'app/app.php';
+$oApp = new Bootstrap;
+$oApp->initializeDebugging();
+$oApp->initializePHPSession();
+$oApp->setTimezoneIfNotSet();
+
+ob_start();
+$oApp->run(); // Let's go baby!
 ob_end_flush();
