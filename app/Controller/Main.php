@@ -81,9 +81,11 @@ class Main extends Base
             $password = Input::post('password');
             $dbPasswordHashed = UserModel::getPassword($email);
 
-            if (Password::check($password, $dbPasswordHashed)) {
+            if (Password::verify($password, $dbPasswordHashed)) {
                 $userId = UserModel::getId($email);
                 User::setAuth($userId, $email);
+
+                $this->updatePasswordHashIfNeeded($password, $dbPasswordHashed, $userId);
 
                 redirect('/');
             } else {
@@ -177,5 +179,12 @@ class Main extends Base
     private function isSpamBot(): bool
     {
         return (bool)Input::post('firstname');
+    }
+
+    public function updatePasswordHashIfNeeded(string $password, string $passwordHash, int $userId): void
+    {
+        if ($newPasswordHash = Password::needsRehash($password, $passwordHash)) {
+            UserModel::updatePassword($newPasswordHash, $userId);
+        }
     }
 }
