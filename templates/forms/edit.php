@@ -15,8 +15,8 @@
     ->placeholder('Business Name Or Your Name')->required() ?>
 
 <?= $form->label('Item Name:')->forId('item') ?>
-<?= $form->text('item_name')->value($item_name)->id('currency')
-    ->placeholder('Donation ...')->required() ?>
+<?= $form->text('item_name')->value($item_name)->id('item')
+    ->required() ?>
 
 <?= $form->label('Currency:')->forId('currency') ?>
 <?php $currencies = [
