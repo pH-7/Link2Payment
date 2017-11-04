@@ -16,18 +16,24 @@ class View
     const ERROR_MSG_KEY = 'error_msg';
     const SUCCESS_MSG_KEY = 'success_msg';
 
+    const PARTIALS_ENABLED = true;
+    const PARTIALS_DISABLED = false;
+
     /**
      * @param string $view
      * @param string $title
      * @param array $data
+     * @param bool $paritals
      *
      * @throws RuntimeException
      */
-    public static function create(string $view, string $title = '', array $data = array()): void
+    public static function create(string $view, string $title = '', array $data = array(), bool $paritals = self::PARTIALS_DISABLED): void
     {
         extract($data);
 
-        include 'templates/header.php';
+        if (!$paritals) {
+            include 'templates/header.php';
+        }
 
         $viewFullPath = 'templates/' . $view . '.php';
         if (is_file($viewFullPath)) {
@@ -36,6 +42,8 @@ class View
             throw new RuntimeException('Could not find view: "' . $viewFullPath . '"');
         }
 
-        include 'templates/footer.php';
+        if ($paritals) {
+            include 'templates/footer.php';
+        }
     }
 }
