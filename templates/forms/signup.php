@@ -45,11 +45,11 @@
 <?= $form->number('amount')->step('0.01')->id('amount')
     ->placeholder('99.99')->required() ?>
 
-<?= $form->label('Stripe Publishable Key:')->forId('publishable_key') ?>
+<?= $form->label('Your Stripe Publishable Key:')->forId('publishable_key') ?>
 <?= $form->text('publishable_key')->id('publishable_key')
     ->required() ?>
 
-<?= $form->label('Stripe Secret Key:')->forId('secret_key') ?>
+<?= $form->label('Your Stripe Secret Key:')->forId('secret_key') ?>
 <?= $form->text('secret_key')->id('secret_key')
     ->required() ?>
 
