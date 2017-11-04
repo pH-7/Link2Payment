@@ -24,7 +24,7 @@ class Payment extends Base
         if (!empty($dbData)) {
             $tplVars = [
                 'payment_gateway' => $dbData->paymentGateway,
-                'businessName' => $dbData->businessName,
+                'business_name' => $dbData->businessName,
                 'publishable_key' => $dbData->publishableKey,
                 'item_name' => $dbData->itemName,
                 'amount' => $dbData->amount,
