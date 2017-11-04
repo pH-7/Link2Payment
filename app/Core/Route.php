@@ -46,9 +46,14 @@ class Route
         self::run($fromUri, $toUrl);
     }
 
-    public static function isHomepage(): bool
+    public static function isHomePage(): bool
     {
         return empty($_GET['uri']);
+    }
+
+    public static function isStripePage(): bool
+    {
+        return !empty($_GET['uri']) && strpos($_GET['uri'], 'stripe');
     }
 
     /**

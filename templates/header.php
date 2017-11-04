@@ -22,6 +22,8 @@
     <![endif]-->
 </head>
 <body>
+
+<?php if (Core\Route::isStripePage()): ?>
   <nav class="light-orange lighten-1" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
@@ -38,7 +40,7 @@
     </div>
   </nav>
 
-  <?php if (Core\Route::isHomepage()): ?>
+  <?php if (Core\Route::isHomePage()): ?>
       <header class="section no-pad-bot" id="index-banner">
         <div class="container">
           <h2 class="header center orange-text">Get Stripe Payment Link</h2>
@@ -48,5 +50,6 @@
         </div>
       </header>
   <?php endif ?>
+<?php endif ?>
 
   <section class="container center-block container-margin">
