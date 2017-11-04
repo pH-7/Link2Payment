@@ -53,7 +53,7 @@ class Route
 
     public static function isStripePage(): bool
     {
-        return !empty($_GET['uri']) && strpos($_GET['uri'], 'stripe');
+        return !empty($_GET['uri']) && strpos($_GET['uri'], 'stripe') !== false;
     }
 
     /**
