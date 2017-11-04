@@ -148,9 +148,10 @@ class Main extends Base
         $password2 = Input::post('repeated_password');
 
         if (Input::post('update_password')) {
-            if (Password::hash($currentPassword) === UserModel::getPassword($email)) {
+            $hashedPassword = UserModel::getPassword($email);
+            if (Password::verify($currentPassword, $hashedPassword)) {
                 if ($password1 === $password2) {
-                    UserModel::updatePassword($password1, User::getId());
+                    UserModel::updatePassword(Password::hash($password1), User::getId());
 
                     $data = [View::SUCCESS_MSG_KEY => 'Your password has been successfully changed.'];
                 } else {
