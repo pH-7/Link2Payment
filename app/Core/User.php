@@ -9,7 +9,6 @@ declare(strict_types = 1);
 
 namespace PH7App\Core;
 
-use PH7App;
 use PH7App\Core\Session;
 
 class User

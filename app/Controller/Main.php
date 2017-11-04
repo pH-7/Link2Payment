@@ -126,11 +126,11 @@ class Main extends Base
                 'item_name' => Input::post('item_name'),
                 'currency' => Input::post('currency'),
                 'amount' => Input::post('amount'),
-                'is_bitcoin' => Input::post('is_bitcoin')
+                'is_bitcoin' => (Input::post('is_bitcoin') === 'Yes' ? 1 : 0)
             ];
             PaymentModel::update($paymentData);
 
-            $tplVars = [View::SUCCESS_MSG_KEY => 'Details successfully updated!'];
+            $tplVars += [View::SUCCESS_MSG_KEY => 'Details successfully updated!'];
         }
 
         View::create('forms/edit', 'Edit Your Details', $tplVars);
