@@ -5,7 +5,7 @@
 
 CREATE TABLE user (
   userId int(11) unsigned NOT NULL AUTO_INCREMENT,
-  hash varchar(20) NOT NULL,
+  hash varchar(40) NOT NULL,
   email varchar(120) NOT NULL,
   password varchar(120) NOT NULL,
   fullname varchar(250) NOT NULL,
