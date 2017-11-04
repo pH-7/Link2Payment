@@ -18,14 +18,14 @@ class Payment extends Base
 {
     public function stripe(): void
     {
-        $hash = Input::get('id');
+        $hash = Input::get('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
         if (!empty($dbData)) {
             $tplVars = [
                 'payment_gateway' => $dbData->paymentGateway,
-                'businessName' => $dbData->business_name,
-                'publishable_key' => $dbData->publishable_key,
+                'businessName' => $dbData->businessName,
+                'publishable_key' => $dbData->publishableKey,
                 'item_name' => $dbData->itemName,
                 'amount' => $dbData->amount,
                 'currency' => $dbData->currency,
@@ -41,7 +41,7 @@ class Payment extends Base
 
     public function checkout(): void
     {
-        $hash = Input::post('id');
+        $hash = Input::post('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
         \Stripe\Stripe::setApiKey($dbData->secretKey);
