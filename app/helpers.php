@@ -7,44 +7,48 @@
 
 declare(strict_types = 1);
 
-namespace PH7App;
+namespace PH7App {
 
-function site_url(string $var = ''): string
-{
-    $siteUrl = getenv('SITE_URL');
+}
 
-    if (!empty($var)) {
-        return $siteUrl . $var;
+namespace {
+    function site_url(string $var = ''): string
+    {
+        $siteUrl = getenv('SITE_URL');
+
+        if (!empty($var)) {
+            return $siteUrl . $var;
+        }
+
+        return $siteUrl;
     }
 
-    return $siteUrl;
-}
-
-function site_name(): string
-{
-    return getenv('SITE_NAME');
-}
-
-function asset_url(string $var): string
-{
-    return getenv('SITE_URL') . 'assets/' . $var;
-}
-
-function redirect(string $url, bool $permanent = true): void
-{
-    if ($permanent) {
-        header('HTTP/1.1 301 Moved Permanently');
+    function site_name(): string
+    {
+        return getenv('SITE_NAME');
     }
 
-    if (strpos($url, 'http') === false) {
-        $url = getenv('SITE_URL') . $url;
+    function asset_url(string $var): string
+    {
+        return getenv('SITE_URL') . 'assets/' . $var;
     }
 
-    header('Location: ' . $url);
-    exit;
-}
+    function redirect(string $url, bool $permanent = true): void
+    {
+        if ($permanent) {
+            header('HTTP/1.1 301 Moved Permanently');
+        }
 
-function escape(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES);
+        if (strpos($url, 'http') === false) {
+            $url = getenv('SITE_URL') . $url;
+        }
+
+        header('Location: ' . $url);
+        exit;
+    }
+
+    function escape(string $value): string
+    {
+        return htmlspecialchars($value, ENT_QUOTES);
+    }
 }
