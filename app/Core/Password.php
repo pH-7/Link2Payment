@@ -41,7 +41,7 @@ final class Password
      *
      * @return bool
      */
-    public static function check($password, $hash): bool
+    public static function verify($password, $hash): bool
     {
         return password_verify($password, $hash);
     }
