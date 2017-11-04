@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<?php if (Core\Route::isStripePage()): ?>
+<?php if (!Core\Route::isStripePage()): ?>
   <nav class="light-orange lighten-1" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
