@@ -22,7 +22,7 @@ class User
      */
     public static function getDetails(int $userId)
     {
-        Database::query('SELECT * FROM user AS u INNER JOIN payment AS p USING(userId) WHERE u.hash = :hash LIMIT 1', ['userId' => $userId]);
+        Database::query('SELECT * FROM user AS u INNER JOIN payment AS p USING(userId) WHERE u.userId = :user_id LIMIT 1', ['user_id' => $userId]);
 
         return Database::fetch();
     }
