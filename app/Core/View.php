@@ -42,7 +42,7 @@ class View
             throw new RuntimeException('Could not find view: "' . $viewFullPath . '"');
         }
 
-        if ($paritals) {
+        if (!$paritals) {
             include 'templates/footer.php';
         }
     }
