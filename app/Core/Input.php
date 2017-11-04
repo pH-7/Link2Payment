@@ -18,7 +18,7 @@ class Input
      */
     public static function userIp()
     {
-        return $_SERVER['REMOTE_ADDR'];
+        return static::clean($_SERVER['REMOTE_ADDR']);
     }
 
     /**
@@ -28,7 +28,7 @@ class Input
      */
     public static function userAgent()
     {
-        return $_SERVER['HTTP_USER_AGENT'];
+        return static::clean($_SERVER['HTTP_USER_AGENT']);
     }
 
     /**
@@ -40,7 +40,7 @@ class Input
      */
     public static function post($key)
     {
-        return isset($_POST[$key]) ? $_POST[$key] : false;
+        return isset($_POST[$key]) ? static::clean($_POST[$key]) : false;
     }
 
     /**
@@ -52,18 +52,18 @@ class Input
      */
     public static function get($key)
     {
-        return isset($_GET[$key]) ? $_GET[$key] : false;
+        return isset($_GET[$key]) ? static::clean($_GET[$key]) : false;
     }
 
     /**
      * Returns the value of a clean input.
      *
-     * @param string $key
+     * @param string $value
      *
-     * @return string|bool
+     * @return string
      */
-    public static function clean($key)
+    private static function clean($value)
     {
-        return trim(addslashes(htmlentities($key)));
+        return strip_tags($value);
     }
 }
