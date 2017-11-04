@@ -22,5 +22,6 @@ class Base
         header('HTTP/1.1 404 Not Found');
 
         View::create('not-found', 'Page Not Found');
+        exit;
     }
 }
