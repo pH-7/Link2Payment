@@ -45,6 +45,7 @@
 <?= $form->number('amount')->step('0.01')->id('amount')
     ->placeholder('99.99')->required() ?>
 
+<p class="italic small">Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your Stripe Account.</p>
 <?= $form->label('Your Stripe Publishable Key:')->forId('publishable_key') ?>
 <?= $form->text('publishable_key')->id('publishable_key')
     ->required() ?>
