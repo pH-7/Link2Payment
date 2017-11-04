@@ -7,9 +7,9 @@
 
 namespace PH7App;
 
+use Exception;
 use PH7App\Core\Database;
 use PH7App\Core\Main;
-use Exception;
 
 define('APP_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 

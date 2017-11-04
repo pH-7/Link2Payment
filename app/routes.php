@@ -9,7 +9,6 @@ namespace PH7App;
 
 use PH7App\Core\Route;
 use PH7App\Core\User;
-use PH7App\Core\Session;
 
 if (!User::isLoggedIn()) {
     Route::get('/', 'Main@index');

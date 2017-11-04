@@ -10,8 +10,6 @@ declare(strict_types = 1);
 namespace PH7App\Core;
 
 use PH7App\Controller\Base as BaseController;
-use InvalidArgumentException;
-use RuntimeException;
 
 class Route
 {
