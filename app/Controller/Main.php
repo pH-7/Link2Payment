@@ -9,7 +9,6 @@ declare(strict_types = 1);
 
 namespace PH7App\Controller;
 
-use PH7App;
 use PH7App\Core\Input;
 use PH7App\Core\Password;
 use PH7App\Core\Session;
@@ -54,7 +53,7 @@ class Main extends Base
                 $paymentData = [
                     'user_id' => $userId,
                     'publishable_key' => Input::post('publishable_key'),
-                    'private_key' => Input::post('private_key'),
+                    'secret_key' => Input::post('secret_key'),
                     'business_name' => Input::post('business_name'),
                     'item_name' => Input::post('item_name'),
                     'currency' => Input::post('currency'),
