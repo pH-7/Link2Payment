@@ -1,6 +1,6 @@
 <?php namespace PH7App; ?>
 
-<h2><?= $item_name ?> - <?= $business_name ?></h2>
+<h3 class="center"><?= $item_name ?> - <?= $business_name ?></h3>
 
 <div class="center">
     <?php $form = new \AdamWathan\Form\FormBuilder; ?>
