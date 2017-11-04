@@ -46,7 +46,7 @@
     ->required() ?>
 
 <?= $form->label('Allow Bitcoin Payment?')->forId('is_bitcoin') ?>
-<?= $form->radio('is_bitcoin', ['1' => 'Yes', '0' => 'No'])->value($is_bitcoin)
-    ->id('is_bitcoin')->required() ?>
+<?= $form->radio('is_bitcoin', 'No')->value($is_bitcoin)->id('is_bitcoin') ?>
+<?= $form->radio('is_bitcoin', 'Yes')->value($is_bitcoin)->id('is_bitcoin') ?>
 
 <?= $form->submit('Update')->addClass('bold waves-effect btn-large') ?>

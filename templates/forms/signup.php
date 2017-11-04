@@ -13,18 +13,18 @@
 <?= $form->email('email')->id('email')
     ->placeholder('myself@mybusiness.com')->required() ?>
 
-<?= $form->label('Business Name:')->forId('business') ?>
-<?= $form->text('business_name')->id('business')
-    ->placeholder('Business Name Or Your Name')->required() ?>
-
 <?= $form->label('Password:')->forId('password') ?>
 <?= $form->password('password')->id('password')
     ->placeholder('Your Secure Password')
     ->pattern('.{6,}')->title('Password must be at least 6 characters long')->required() ?>
 
+<?= $form->label('Business Name:')->forId('business') ?>
+<?= $form->text('business_name')->id('business')
+    ->placeholder('Business Name Or Your Name')->required() ?>
+
 <?= $form->label('Item Name:')->forId('item') ?>
-<?= $form->text('item_name')->id('currency')
-    ->placeholder('Donation ...')->required() ?>
+<?= $form->text('item_name')->id('item')
+    ->placeholder('Donation, Item Name, etc.')->required() ?>
 
 <?= $form->label('Currency:')->forId('currency') ?>
 <?php $currencies = [
