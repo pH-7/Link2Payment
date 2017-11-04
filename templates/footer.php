@@ -1,6 +1,6 @@
 <?php namespace PH7App; ?>
 
-<?php if (Core\Route::isStripePage()): ?>
+<?php if (!Core\Route::isStripePage()): ?>
   </section>
 
   <footer class="page-footer light-orange">
