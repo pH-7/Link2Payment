@@ -41,7 +41,7 @@ class User
     {
         Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 
-        return Database::fetch()->userId;
+        return (int)Database::fetch()->userId;
     }
 
     public static function doesAccountAlreadyExist(string $email): bool
@@ -53,11 +53,11 @@ class User
         return Database::rowCount() > 0;
     }
 
-    public static function getPassword(string $email)
+    public static function getPassword(string $email): string
     {
         Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 
-        return Database::fetch()->password;
+        return (string)Database::fetch()->password;
     }
 
     public static function updatePassword(string $newPassword, int $userId): void
