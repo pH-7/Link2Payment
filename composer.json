@@ -1,6 +1,6 @@
 {
   "name": "ph-7/link2payment",
-  "description": "Get your Stripe/PayPal payment link to get paid everywhere, in emails, on a non-SSL website, donation, from a ebook, on a book (by just displaying the payment link, ...)",
+  "description": "Get your Stripe/PayPal payment link to get paid everywhere, in emails, on a non-SSL website, donation, from an ebook, on a book (by just displaying the payment link, ...)",
   "keywords": ["payment", "stripe", "link", "link payment", "stripe payment", "paypal", "share link payment", "stripe donation", "donation", "donate"],
   "type": "project",
   "homepage": "http://ph7.me",

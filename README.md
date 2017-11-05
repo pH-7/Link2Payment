@@ -1,6 +1,6 @@
 # Link2Payment
 
-Get your Stripe payment link to get paid everywhere, in emails, on a non-SSL website, donation, from a ebook, on a book (by just displaying the payment link, ...).
+Get your Stripe payment link to get paid everywhere, in emails, on a non-SSL website, donation, from an ebook, on a book (by just displaying the payment link, ...).
 
 The website is based on a homemade lightweight PHP framework (ideal for very small web apps). Feel free to use it if you like it :smiley:
 
