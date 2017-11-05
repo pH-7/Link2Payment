@@ -42,9 +42,10 @@ class Main extends Base
 
             if (!UserModel::doesAccountAlreadyExist($email)) {
                 $userData = [
-                    'hash' => User::generateHash(),
                     'email' => $email,
-                    'password' => Password::hash(Input::post('password'))
+                    'password' => Password::hash(Input::post('password')),
+                    'hash' => User::generateHash(),
+                    'ip' => Input::userIp()
                 ];
                 UserModel::insert($userData);
 
@@ -57,8 +58,7 @@ class Main extends Base
                     'business_name' => Input::post('business_name'),
                     'item_name' => Input::post('item_name'),
                     'currency' => Input::post('currency'),
-                    'amount' => Input::post('amount'),
-                    'ip' => Input::userIp()
+                    'amount' => Input::post('amount')
                 ];
                 PaymentModel::insert($paymentData);
 

@@ -29,7 +29,7 @@ class User
 
     public static function insert(array $binds): void
     {
-        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (email, password, hash) VALUES(:email, :password, :hash)', $binds);
+        Database::query('INSERT INTO ' . self::TABLE_NAME . ' (email, password, hash, ip) VALUES(:email, :password, :hash, :ip)', $binds);
     }
 
     public static function update(array $binds): void
