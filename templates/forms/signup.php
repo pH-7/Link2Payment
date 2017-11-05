@@ -52,7 +52,8 @@
 </p>
 
 <p>
-    <?= $form->label('Amount:')->forId('amount') ?>
+    <?= $form->label(sprintf('%s Amount:', '<span id="currency">USD</span>'))
+        ->forId('amount') ?>
     <?= $form->number('amount')->step('0.01')->id('amount')
         ->placeholder('99.99')->required() ?>
 </p>

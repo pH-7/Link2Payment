@@ -38,11 +38,12 @@
         'NZD' => 'NZD'
     ] ?>
     <?= $form->select('currency', $currencies)
-        ->value($currency)->id('currency') ?>
+        ->id('currency')->select($currency) ?>
 </p>
 
 <p>
-    <?= $form->label('Amount:')->forId('amount') ?>
+    <?= $form->label(sprintf('%s Amount:', '<span id="currency">' . $currency . '</span>'))
+        ->forId('amount') ?>
     <?= $form->number('amount')->step('0.01')->value($amount)->id('amount')
         ->placeholder('99.99')->required() ?>
 </p>

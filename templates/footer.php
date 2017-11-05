@@ -39,8 +39,11 @@
     <script src="https://cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.js"></script>
     <script>
         $(document).ready(function() {
-            $('select').material_select();
+            $('select#currency').on('change', function () {
+                $('span#currency').text($('select').val());
+            });
 
+            $('select').material_select();
         });
     </script>
 </body>
