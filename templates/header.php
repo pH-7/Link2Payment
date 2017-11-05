@@ -24,7 +24,7 @@
 <body>
 
 <?php if (!Core\Route::isStripePage()): ?>
-  <nav class="light-orange lighten-1" role="navigation">
+  <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
       <ul id="nav-mobile" class="right">

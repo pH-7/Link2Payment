@@ -3,7 +3,7 @@
 <?php if (!Core\Route::isStripePage()): ?>
   </section>
 
-  <footer class="page-footer light-orange">
+  <footer class="page-footer light-blue">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
