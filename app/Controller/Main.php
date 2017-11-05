@@ -99,21 +99,9 @@ class Main extends Base
     public function edit(): void
     {
         $userId = User::getId();
+        $tplVars = [];
 
-        $dbData = UserModel::getDetails($userId);
-
-        $tplVars = [
-            'fullname' => $dbData->fullname,
-            'publishable_key' => $dbData->publishableKey,
-            'secret_key' => $dbData->secretKey,
-            'business_name' => $dbData->businessName,
-            'item_name' => $dbData->itemName,
-            'currency' => $dbData->currency,
-            'amount' => $dbData->amount,
-            'is_bitcoin' => $dbData->isBitcoin
-        ];
-
-        if (Input::post('signup')) {
+        if (Input::post('edit')) {
             $userData = [
                 'user_id' => $userId,
                 'fullname' => Input::post('fullname')
@@ -128,12 +116,25 @@ class Main extends Base
                 'item_name' => Input::post('item_name'),
                 'currency' => Input::post('currency'),
                 'amount' => Input::post('amount'),
-                'is_bitcoin' => (Input::post('is_bitcoin') === 'Yes' ? 1 : 0)
+                'is_bitcoin' => (int)Input::post('is_bitcoin')
             ];
             PaymentModel::update($paymentData);
 
             $tplVars += [View::SUCCESS_MSG_KEY => 'Details successfully updated!'];
         }
+
+        $dbData = UserModel::getDetails($userId);
+
+        $tplVars += [
+            'fullname' => $dbData->fullname,
+            'publishable_key' => $dbData->publishableKey,
+            'secret_key' => $dbData->secretKey,
+            'business_name' => $dbData->businessName,
+            'item_name' => $dbData->itemName,
+            'currency' => $dbData->currency,
+            'amount' => $dbData->amount,
+            'is_bitcoin' => (bool)$dbData->isBitcoin
+        ];
 
         View::create('forms/edit', 'Edit Your Details', $tplVars);
     }
