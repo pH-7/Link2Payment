@@ -1,5 +1,7 @@
 <?php namespace PH7App; ?>
 
+<h3 class="center">Get Your Stripe Payment Link for Free</h3>
+
 <?php include 'message.inc.php' ?>
 
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
