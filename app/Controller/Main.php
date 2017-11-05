@@ -57,7 +57,8 @@ class Main extends Base
                     'business_name' => Input::post('business_name'),
                     'item_name' => Input::post('item_name'),
                     'currency' => Input::post('currency'),
-                    'amount' => Input::post('amount')
+                    'amount' => Input::post('amount'),
+                    'ip' => Input::userIp()
                 ];
                 PaymentModel::insert($paymentData);
 

@@ -11,6 +11,9 @@ namespace PH7App\Core;
 
 class Input
 {
+    const REGEX_IP_FORMAT = '/^[a-z0-9:.]{7,}$/';
+    const DEFAULT_IP = '127.0.0.1';
+
     /**
      * Returns the IP address of the user.
      *
@@ -18,7 +21,15 @@ class Input
      */
     public static function userIp()
     {
-        return static::clean($_SERVER['REMOTE_ADDR']);
+        $sIp = $_SERVER['REMOTE_ADDR']; // Default value
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $sIp = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $sIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        return preg_match(static::REGEX_IP_FORMAT, $sIp) ? $sIp : static::DEFAULT_IP;
     }
 
     /**

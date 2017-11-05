@@ -11,6 +11,8 @@ CREATE TABLE user (
   fullname varchar(250) NOT NULL,
   isTwoFactorAuth enum('1','0') DEFAULT '0',
   twoFactorAuthSecret varchar(40) DEFAULT NULL,
+  ip varchar(45) NOT NULL DEFAULT '127.0.0.1',
+  registrationDate datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY (hash),
   UNIQUE KEY (email),
   PRIMARY KEY (userId)
