@@ -4,6 +4,8 @@ Get your Stripe payment link to get paid everywhere, in emails, on a non-SSL web
 
 The website is based on a homemade lightweight PHP framework (ideal for very small web apps). Feel free to use it if you like it :smiley:
 
+![Payment2Link](screenshots/Stripe-Payment-Link-Link2Payment.png)
+
 
 ## Requirements
 
