@@ -183,7 +183,7 @@ class Main extends Base
         return (bool)Input::post('firstname');
     }
 
-    public function updatePasswordHashIfNeeded(string $password, string $passwordHash, int $userId): void
+    private function updatePasswordHashIfNeeded(string $password, string $passwordHash, int $userId): void
     {
         if ($newPasswordHash = Password::needsRehash($password, $passwordHash)) {
             UserModel::updatePassword($newPasswordHash, $userId);
