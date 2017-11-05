@@ -12,7 +12,7 @@
 <?= $form->hidden('firstname')->addClass('nofield') // Spambot prevention using a hidden field ?>
 
 <p>
-    <?= $form->label('Email:')->forId('email') ?>
+    <?= $form->label('Valid Email:')->forId('email') ?>
     <?= $form->email('email')->id('email')
         ->placeholder('myself@mybusiness.com')->required() ?>
 </p>
