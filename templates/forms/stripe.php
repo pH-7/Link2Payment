@@ -4,7 +4,7 @@
 
 <div class="center">
     <?php $form = new \AdamWathan\Form\FormBuilder; ?>
-    <?= $form->open()->action(site_url('checkout')) ?>
+    <?= $form->open()->action(site_url('stripe-checkout')) ?>
     <?= $form->hidden('hash')->value($hash) ?>
 
     <script

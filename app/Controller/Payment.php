@@ -16,12 +16,16 @@ use function PH7App\site_name;
 
 class Payment extends Base
 {
+    const STRIPE_GATEWAY = 'stripe';
+    const PAYPAL_GATEWAY = 'paypal';
+    const PAYPAL_PAYMENT_URL = 'https://www.paypal.com/cgi-bin/webscr';
+
     public function stripe(): void
     {
         $hash = Input::get('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
-        if (!empty($dbData)) {
+        if (!empty($dbData) && $dbData->paymentGateway === self::STRIPE_GATEWAY) {
             $tplVars = [
                 'payment_gateway' => $dbData->paymentGateway,
                 'business_name' => $dbData->businessName,
@@ -39,7 +43,7 @@ class Payment extends Base
         }
     }
 
-    public function checkout(): void
+    public function stripeCheckout(): void
     {
         $hash = Input::post('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
@@ -92,6 +96,22 @@ class Payment extends Base
             ->setBody($textMessage);
 
         return $mailer->send($message);
+    }
+
+    public function paypal(): void
+    {
+        $hash = Input::get('hash');
+        $dbData = PaymentModel::getPaymentInfo($hash);
+
+        if (!empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY) {
+            $queries = [
+                'cmd' => ''
+            ];
+            $urlQueries = http_build_query($queries);
+            redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
+        } else {
+            $this->notFound();
+        }
     }
 
     private function sendEmailToSeller()

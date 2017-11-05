@@ -60,18 +60,34 @@
         ->placeholder('99.99')->required() ?>
 </p>
 
-<p class="italic small">Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your Stripe Account.</p>
 <p>
-    <?= $form->label('Your Stripe Publishable Key:')->forId('publishable_key') ?>
-    <?= $form->text('publishable_key')->id('publishable_key')
-        ->required() ?>
+    <?= $form->label('Payment Gateway:') ?>
+    <?= $form->radio('payment_gateway', 'stripe')->check() ?> Stripe
+    <?= $form->radio('payment_gateway', 'paypal') ?> PayPal
 </p>
 
-<p>
-    <?= $form->label('Your Stripe Secret Key:')->forId('secret_key') ?>
-    <?= $form->text('secret_key')->id('secret_key')
-        ->required() ?>
-</p>
+<div id="stripe-settings">
+    <p class="italic small">Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your Stripe Account.</p>
+    <p>
+        <?= $form->label('Your Stripe Publishable Key:')->forId('publishable_key') ?>
+        <?= $form->text('publishable_key')->id('publishable_key')
+            ->required() ?>
+    </p>
+
+    <p>
+        <?= $form->label('Your Stripe Secret Key:')->forId('secret_key') ?>
+        <?= $form->text('secret_key')->id('secret_key')
+            ->required() ?>
+    </p>
+</div>
+
+<div id="paypal-settings" class="hidden">
+    <p>
+        <?= $form->label('Your PayPal Email:')->forId('paypal_email') ?>
+        <?= $form->text('paypal_email')->id('paypal_email')
+            ->required() ?>
+    </p>
+</div>
 
 <p>
     <?= $form->submit('Sign Up')->addClass('bold waves-effect btn-large') ?>

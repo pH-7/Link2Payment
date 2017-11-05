@@ -20,6 +20,7 @@ Options +FollowSymLinks
     # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     RewriteRule ^s/([a-z0-9\.\-_]+)$ index.php?uri=stripe&hash=$1 [QSA,L]
+    RewriteRule ^p/([a-z0-9\.\-_]+)$ index.php?uri=paypal&hash=$1 [QSA,L]
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

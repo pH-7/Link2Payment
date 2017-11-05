@@ -43,6 +43,17 @@
                 $('span#currency').text($('select').val());
             });
 
+            $('radio[payment_gateway]').on('click', function () {
+                if ($(this).val() == 'stripe') {
+                    $('#stripe-settings').display();
+                    $('#paypal-settings').hide();
+                } else {
+                    $('#stripe-settings').hide();
+                    $('#paypal-settings').display();
+                }
+            });
+
+            // Enable Select since Materialize disables it
             $('select').material_select();
         });
     </script>
