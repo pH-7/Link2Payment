@@ -37,5 +37,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="<?php echo site_url('node_modules/materialize-css/dist/js/materialize.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').material_select();
+
+        });
+    </script>
 </body>
 </html>
