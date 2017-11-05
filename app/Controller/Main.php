@@ -121,7 +121,7 @@ class Main extends Base
             ];
             PaymentModel::update($paymentData);
 
-            $tplVars += [View::SUCCESS_MSG_KEY => 'Details successfully updated!'];
+            $tplVars += [View::SUCCESS_MSG_KEY => 'Successfully saved!'];
         }
 
         $dbData = UserModel::getDetails($userId);
