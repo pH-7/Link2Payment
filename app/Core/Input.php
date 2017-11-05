@@ -21,15 +21,15 @@ class Input
      */
     public static function userIp()
     {
-        $sIp = $_SERVER['REMOTE_ADDR']; // Default value
+        $ip = $_SERVER['REMOTE_ADDR']; // Default value
 
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $sIp = $_SERVER['HTTP_CLIENT_IP'];
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
         } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $sIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
         }
 
-        return preg_match(static::REGEX_IP_FORMAT, $sIp) ? $sIp : static::DEFAULT_IP;
+        return preg_match(static::REGEX_IP_FORMAT, $ip) ? $ip : static::DEFAULT_IP;
     }
 
     /**
