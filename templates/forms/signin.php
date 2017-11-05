@@ -7,12 +7,18 @@
 <?= $form->token() ?>
 <?= $form->hidden('signin')->value(1) ?>
 
-<?= $form->label('Email:')->forId('email') ?>
-<?= $form->email('email')->id('email')
-    ->placeholder('myself@mybusiness.com')->required() ?>
+<p>
+    <?= $form->label('Email:')->forId('email') ?>
+    <?= $form->email('email')->id('email')
+        ->placeholder('myself@mybusiness.com')->required() ?>
+</p>
 
-<?= $form->label('Password:')->forId('password') ?>
-<?= $form->password('password')->id('password')
-    ->placeholder('Your Secure Password')->required() ?>
+<p>
+    <?= $form->label('Password:')->forId('password') ?>
+    <?= $form->password('password')->id('password')
+        ->placeholder('Your Secure Password')->required() ?>
+</p>
 
-<?= $form->submit('Sign In')->addClass('bold waves-effect btn-large') ?>
+<p>
+    <?= $form->submit('Sign In')->addClass('bold waves-effect btn-large') ?>
+</p>

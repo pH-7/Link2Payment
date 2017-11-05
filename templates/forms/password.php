@@ -7,18 +7,26 @@
 <?= $form->token() ?>
 <?= $form->hidden('update_password')->value(1) ?>
 
-<?= $form->label('Current Password:')->forId('current_password') ?>
-<?= $form->password('current_password')->id('current_password')
-    ->required() ?>
+<p>
+    <?= $form->label('Current Password:')->forId('current_password') ?>
+    <?= $form->password('current_password')->id('current_password')
+        ->required() ?>
+</p>
 
-<?= $form->label('New Password:')->forId('new_password') ?>
-<?= $form->password('new_password')->id('new_password')
-    ->pattern('.{6,}')->title('Password must be at least 6 characters long')
-    ->required() ?>
+<p>
+    <?= $form->label('New Password:')->forId('new_password') ?>
+    <?= $form->password('new_password')->id('new_password')
+        ->pattern('.{6,}')->title('Password must be at least 6 characters long')
+        ->required() ?>
+</p>
 
-<?= $form->label('Repeat Password:')->forId('repeated_password') ?>
-<?= $form->password('repeated_password')->id('repeated_password')
-    ->pattern('.{6,}')->title('Password must be at least 6 characters long')
-    ->required() ?>
+<p>
+    <?= $form->label('Repeat Password:')->forId('repeated_password') ?>
+    <?= $form->password('repeated_password')->id('repeated_password')
+        ->pattern('.{6,}')->title('Password must be at least 6 characters long')
+        ->required() ?>
+</p>
 
-<?= $form->submit('Change Password')->addClass('bold waves-effect btn-large') ?>
+<p>
+    <?= $form->submit('Change Password')->addClass('bold waves-effect btn-large') ?>
+</p>
