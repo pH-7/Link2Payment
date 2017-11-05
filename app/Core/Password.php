@@ -56,7 +56,7 @@ final class Password
      */
     public static function needsRehash(string $password, string $hash)
     {
-        if (password_needs_rehash($hash, self::PWD_ALGORITHM, self::$_aPwdOptions)) {
+        if (password_needs_rehash($hash, self::PWD_ALGORITHM, self::$options)) {
             return self::hash($password);
         }
 
