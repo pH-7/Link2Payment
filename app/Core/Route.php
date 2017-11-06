@@ -11,6 +11,7 @@ namespace PH7App\Core;
 
 use ReflectionClass;
 use ReflectionMethod;
+use ReflectionException;
 use PH7App\Controller\Base as BaseController;
 
 class Route
@@ -64,6 +65,8 @@ class Route
      * @param string $value
      *
      * @return mixed
+     *
+     * @throws ReflectionException If the class or method doesn't exist.
      */
     private static function run(string $uri, string $value)
     {
@@ -83,13 +86,17 @@ class Route
                 $className = self::CONTROLLER_NAMESPACE . $split[0];
                 $method = $split[1];
 
-                if (class_exists($className) && (new ReflectionClass($className))->hasMethod($method)) {
-                    $action = new ReflectionMethod($className, $method);
-                    if ($action->isPublic()) {
-                        // And finally we perform the controller's action
-                        return $action->invokeArgs(new $className, self::getActionParameters($params));
+                try {
+                    if (class_exists($className) && (new ReflectionClass($className))->hasMethod($method)) {
+                        $action = new ReflectionMethod($className, $method);
+                        if ($action->isPublic()) {
+                            // And finally we perform the controller's action
+                            return $action->invokeArgs(new $className, self::getActionParameters($params));
+                        }
+                        unset($action);
                     }
-                    unset($action);
+                } catch (ReflectionException $except) {
+                    (new BaseController)->notFound();
                 }
             }
             //throw new RuntimeException('Method "' . $method . '" was not found in "' . $class . '" class.');
