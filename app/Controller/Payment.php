@@ -105,9 +105,14 @@ class Payment extends Base
 
         if (!empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY) {
             $queries = [
-                'cmd' => ''
+                'cmd' => '_xclick',
+                'business' => $dbData->paypalEmail,
+                'item_name' => $dbData->itemName,
+                'amount' => $dbData->amount,
+                'currency_code' => $dbData->currency
             ];
             $urlQueries = http_build_query($queries);
+
             redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
         } else {
             $this->notFound();
