@@ -133,9 +133,9 @@ class Main extends Base
 
         $tplVars += [
             'fullname' => $dbData->fullname,
-            'paypal_email' => $dbData->paypalEmail,
             'publishable_key' => $dbData->publishableKey,
             'secret_key' => $dbData->secretKey,
+            'paypal_email' => $dbData->paypalEmail,
             'business_name' => $dbData->businessName,
             'item_name' => $dbData->itemName,
             'currency' => $dbData->currency,
