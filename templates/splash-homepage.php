@@ -14,4 +14,8 @@
         <span class="bold">"One Account" = "One Stripe Link Form" (to share anywhere with anyone)</span><br />
         <span class="small">You will need more accounts (with other valid email addresses) if you need more stripe links.</span>
     </p>
+
+    <p>
+        Psst! It now works also with PayPal! Get easier your PayPal Payment Link than generating a PayPal button through the old and painful PayPal website.
+    </p>
 </div>
