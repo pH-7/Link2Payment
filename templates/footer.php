@@ -35,24 +35,11 @@
 <?php endif ?>
   </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="<?php echo site_url('node_modules/materialize-css/dist/js/materialize.min.js') ?>"></script>
+    <script src="<?= site_url('node_modules/materialize-css/dist/js/materialize.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/cookie-bar/1/cookiebar-latest.js"></script>
+    <script src="<?= asset_url('js/common.js') ?>"></script>
     <script>
         $(document).ready(function() {
-            $('select#currency').on('change', function () {
-                $('span#currency').text($('select').val());
-            });
-
-            $('radio[payment_gateway]').on('click', function () {
-                if ($(this).val() == 'stripe') {
-                    $('#stripe-settings').display();
-                    $('#paypal-settings').hide();
-                } else {
-                    $('#stripe-settings').hide();
-                    $('#paypal-settings').display();
-                }
-            });
-
             // Enable Select since Materialize disables it
             $('select').material_select();
         });
