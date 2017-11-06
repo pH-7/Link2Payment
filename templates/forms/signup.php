@@ -62,8 +62,8 @@
 
 <p>
     <?= $form->label('Payment Gateway:') ?>
-    <?= $form->radio('payment_gateway', 'stripe')->check() ?> Stripe
-    <?= $form->radio('payment_gateway', 'paypal') ?> PayPal
+    <?= $form->radio('payment_gateway', 'stripe')->id('payment_gateway')->check() ?> Stripe
+    <?= $form->radio('payment_gateway', 'paypal')->id('payment_gateway') ?> PayPal
 </p>
 
 <div id="stripe-settings">
