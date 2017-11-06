@@ -9,11 +9,14 @@ declare(strict_types = 1);
 
 namespace PH7App\Core;
 
+use ReflectionClass;
+use ReflectionMethod;
 use PH7App\Controller\Base as BaseController;
 
 class Route
 {
     const CONTROLLER_NAMESPACE = 'PH7App\Controller\\';
+    const SEPARATOR = '@';
 
     const GET_METHOD = 'GET';
     const POST_METHOD = 'POST';
@@ -76,16 +79,17 @@ class Route
                     (new BaseController)->notFound();
                 }
 
-                $split = explode('@', $value);
+                $split = explode(self::SEPARATOR, $value);
                 $className = self::CONTROLLER_NAMESPACE . $split[0];
                 $method = $split[1];
 
-                $class = new $className;
-                if (method_exists($class, $method)) {
-                    foreach ($params as $k => $v) {
-                        $params[$k] = str_replace('/', '', $v);
+                if (class_exists($className) && (new ReflectionClass($className))->hasMethod($method)) {
+                    $action = new ReflectionMethod($className, $method);
+                    if ($action->isPublic()) {
+                        // And finally we perform the controller's action
+                        return $action->invokeArgs(new $className, self::getActionParameters($params));
                     }
-                    return call_user_func_array(array($class, $method), $params);
+                    unset($action);
                 }
             }
             //throw new RuntimeException('Method "' . $method . '" was not found in "' . $class . '" class.');
@@ -95,6 +99,15 @@ class Route
 
     private static function isController(string $method): bool
     {
-        return strpos($method, '@') !== false;
+        return strpos($method, self::SEPARATOR) !== false;
+    }
+
+    private static function getActionParameters(array $params): array
+    {
+        foreach ($params as $key => $val) {
+            $params[$key] = str_replace('/', '', $val);
+        }
+
+        return $params;
     }
 }
