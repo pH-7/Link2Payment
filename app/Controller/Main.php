@@ -41,7 +41,18 @@ class Main extends Base
         if (!$this->isSpamBot() && Input::post('signup')) {
             $email = Input::post('email');
 
-            if (!UserModel::doesAccountAlreadyExist($email)) {
+            $paymentGateway = Input::post('payment_gateway');
+            $publishableKey = Input::post('publishable_key');
+            $secretKey = Input::post('secret_key');
+            $paypalEmail = Input::post('paypal_email');
+
+            if ($paymentGateway === Payment::STRIPE_GATEWAY &&
+                (!$publishableKey || !$secretKey)
+            ) {
+                $data = [View::ERROR_MSG_KEY => 'Publishable/Secret Keys are mandatory'];
+            } elseif ($paymentGateway === Payment::PAYPAL_GATEWAY && !$paypalEmail) {
+                $data = [View::ERROR_MSG_KEY => 'PayPal Email is mandatory'];
+            } elseif (!UserModel::doesAccountAlreadyExist($email)) {
                 $userData = [
                     'email' => $email,
                     'password' => Password::hash(Input::post('password')),
@@ -54,14 +65,14 @@ class Main extends Base
 
                 $paymentData = [
                     'user_id' => $userId,
-                    'publishable_key' => Input::post('publishable_key'),
-                    'secret_key' => Input::post('secret_key'),
-                    'paypal_email' => Input::post('paypal_email'),
+                    'publishable_key' => $publishableKey,
+                    'secret_key' => $secretKey,
+                    'paypal_email' => $paypalEmail,
                     'business_name' => Input::post('business_name'),
                     'item_name' => Input::post('item_name'),
                     'currency' => Input::post('currency'),
                     'amount' => Input::post('amount'),
-                    'payment_gateway' => Input::post('payment_gateway')
+                    'payment_gateway' => $paymentGateway
                 ];
                 PaymentModel::insert($paymentData);
 

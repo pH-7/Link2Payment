@@ -15,7 +15,7 @@
 <p>
     <?= $form->label('Business Name:')->forId('business') ?>
     <?= $form->text('business_name')->value($business_name)->id('business')
-        ->placeholder('Business Name Or Your Name')->required() ?>
+        ->required() ?>
 </p>
 
 <p>
@@ -45,7 +45,7 @@
     <?= $form->label(sprintf('%s Amount:', '<span id="currency">' . $currency . '</span>'))
         ->forId('amount') ?>
     <?= $form->number('amount')->step('0.01')->value($amount)->id('amount')
-        ->placeholder('99.99')->required() ?>
+        ->required() ?>
 </p>
 
 <p>
@@ -67,14 +67,12 @@
 <div id="stripe-settings" <?php if ($payment_gateway !== Controller\Payment::STRIPE_GATEWAY): ?>class="hidden"<?php endif ?>>
     <p>
         <?= $form->label('Stripe Publishable Key:')->forId('publishable_key') ?>
-        <?= $form->text('publishable_key')->value($publishable_key)->id('publishable_key')
-            ->required() ?>
+        <?= $form->text('publishable_key')->value($publishable_key)->id('publishable_key') ?>
     </p>
 
     <p>
         <?= $form->label('Stripe Secret Key:')->forId('secret_key') ?>
-        <?= $form->text('secret_key')->value($secret_key)->id('secret_key')
-            ->required() ?>
+        <?= $form->text('secret_key')->value($secret_key)->id('secret_key') ?>
     </p>
 
     <p>
@@ -97,8 +95,7 @@
 <div id="paypal-settings" <?php if ($payment_gateway !== Controller\Payment::PAYPAL_GATEWAY): ?>class="hidden"<?php endif ?>>
     <p>
         <?= $form->label('Your PayPal Email:')->forId('paypal_email') ?>
-        <?= $form->text('paypal_email')->id('paypal_email')
-            ->value($paypal_email)->required() ?>
+        <?= $form->text('paypal_email')->id('paypal_email')->value($paypal_email) ?>
     </p>
 </div>
 
