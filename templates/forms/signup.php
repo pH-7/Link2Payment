@@ -84,7 +84,7 @@
 <div id="paypal-settings" class="hidden">
     <p>
         <?= $form->label('Your PayPal Email:')->forId('paypal_email') ?>
-        <?= $form->text('paypal_email')->id('paypal_email')
+        <?= $form->email('paypal_email')->id('paypal_email')
             ->required() ?>
     </p>
 </div>
