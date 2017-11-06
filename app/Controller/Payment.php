@@ -16,9 +16,10 @@ use function PH7App\site_name;
 
 class Payment extends Base
 {
-    const STRIPE_GATEWAY = 'stripe';
-    const PAYPAL_GATEWAY = 'paypal';
-    const PAYPAL_PAYMENT_URL = 'https://www.paypal.com/cgi-bin/webscr';
+    public const STRIPE_GATEWAY = 'stripe';
+    public const PAYPAL_GATEWAY = 'paypal';
+
+    private const PAYPAL_PAYMENT_URL = 'https://www.paypal.com/cgi-bin/webscr';
 
     public function stripe(): void
     {

@@ -11,8 +11,8 @@ namespace PH7App\Core;
 
 class Input
 {
-    const REGEX_IP_FORMAT = '/^[a-z0-9:.]{7,}$/';
-    const DEFAULT_IP = '127.0.0.1';
+    private const REGEX_IP_FORMAT = '/^[a-z0-9:.]{7,}$/';
+    private const DEFAULT_IP = '127.0.0.1';
 
     /**
      * Returns the IP address of the user.

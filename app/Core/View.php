@@ -13,11 +13,11 @@ use RuntimeException;
 
 class View
 {
-    const ERROR_MSG_KEY = 'error_msg';
-    const SUCCESS_MSG_KEY = 'success_msg';
+    public const ERROR_MSG_KEY = 'error_msg';
+    public const SUCCESS_MSG_KEY = 'success_msg';
 
-    const PARTIALS_ENABLED = true;
-    const PARTIALS_DISABLED = false;
+    public const PARTIALS_ENABLED = true;
+    public const PARTIALS_DISABLED = false;
 
     /**
      * @param string $view

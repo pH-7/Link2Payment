@@ -19,7 +19,7 @@ require 'helpers.php';
 
 class Bootstrap
 {
-    const DEFAULT_TIMEZONE = 'America/Chicago';
+    private const DEFAULT_TIMEZONE = 'America/Chicago';
 
     public function __construct()
     {

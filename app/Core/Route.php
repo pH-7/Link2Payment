@@ -16,13 +16,13 @@ use PH7App\Controller\Base as BaseController;
 
 class Route
 {
-    const CONTROLLER_NAMESPACE = 'PH7App\Controller\\';
-    const SEPARATOR = '@';
+    public const GET_METHOD = 'GET';
+    public const POST_METHOD = 'POST';
+    public const PUT_METHOD = 'PUT';
+    public const DELETE_METHOD = 'DELETE';
 
-    const GET_METHOD = 'GET';
-    const POST_METHOD = 'POST';
-    const PUT_METHOD = 'PUT';
-    const DELETE_METHOD = 'DELETE';
+    private const CONTROLLER_NAMESPACE = 'PH7App\Controller\\';
+    private const SEPARATOR = '@';
 
     private static $httpMethod;
 

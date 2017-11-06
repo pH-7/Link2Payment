@@ -11,8 +11,8 @@ namespace PH7App\Core;
 
 final class Password
 {
-    const PWD_ALGORITHM = PASSWORD_BCRYPT;
-    const PWD_WORK_FACTOR = 12;
+    private const PWD_ALGORITHM = PASSWORD_BCRYPT;
+    private const PWD_WORK_FACTOR = 12;
 
     private static $options = ['cost' => self::PWD_WORK_FACTOR];
 
