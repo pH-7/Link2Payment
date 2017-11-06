@@ -1,24 +1,23 @@
 <?php namespace PH7App; ?>
 
-<h3 class="center"><?= $item_name ?> - <?= $business_name ?></h3>
+<h3 class="center"><?= escape($item_name) ?> - <?= escape($business_name) ?></h3>
 
 <div class="center">
     <?php $form = new \AdamWathan\Form\FormBuilder; ?>
-    <?= $form->open()->action(site_url('checkout')) ?>
+    <?= $form->open()->action(site_url('stripe-checkout')) ?>
     <?= $form->hidden('hash')->value($hash) ?>
 
     <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="<?php echo $publishable_key ?>"
-        data-name="<?php echo $business_name ?>"
-        data-description="<?php echo $item_name ?>"
-        data-amount="<?php echo $amount ?>"
-        data-currency="<?php echo $currency ?>"
+        data-key="<?= escape($publishable_key) ?>"
+        data-name="<?= escape($business_name) ?>"
+        data-description="<?= escape($item_name) ?>"
+        data-amount="<?= escape($amount) ?>"
+        data-currency="<?= escape($currency) ?>"
         data-allow-remember-me="true"
-        <?php if ($is_bitcoin) {
-            echo 'data-bitcoin="true"';
-        }
-        ?>
+        <?php if ($is_bitcoin): ?>
+            data-bitcoin="true"
+        <?php endif ?>
     >
     </script>
     </form>

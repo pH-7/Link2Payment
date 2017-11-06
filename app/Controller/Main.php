@@ -28,7 +28,8 @@ class Main extends Base
     {
         $userId = User::getId();
         $dbData = UserModel::getDetails($userId);
-        $tplVars = ['fullname' => $dbData->fullname, 'payment_link' => User::getPaymentLink($dbData->hash)];
+        $methodName = $this->getPaymentMethodName($dbData->paymentGateway);
+        $tplVars = ['fullname' => $dbData->fullname, 'payment_link' => User::$methodName($dbData->hash)];
 
         View::create('home', 'Welcome!', $tplVars);
     }
@@ -55,10 +56,12 @@ class Main extends Base
                     'user_id' => $userId,
                     'publishable_key' => Input::post('publishable_key'),
                     'secret_key' => Input::post('secret_key'),
+                    'paypal_email' => Input::post('paypal_email'),
                     'business_name' => Input::post('business_name'),
                     'item_name' => Input::post('item_name'),
                     'currency' => Input::post('currency'),
-                    'amount' => Input::post('amount')
+                    'amount' => Input::post('amount'),
+                    'payment_gateway' => Input::post('payment_gateway')
                 ];
                 PaymentModel::insert($paymentData);
 
@@ -113,11 +116,13 @@ class Main extends Base
                 'user_id' => $userId,
                 'publishable_key' => Input::post('publishable_key'),
                 'secret_key' => Input::post('secret_key'),
+                'paypal_email' => Input::post('paypal_email'),
                 'business_name' => Input::post('business_name'),
                 'item_name' => Input::post('item_name'),
                 'currency' => Input::post('currency'),
                 'amount' => Input::post('amount'),
-                'is_bitcoin' => (int)Input::post('is_bitcoin')
+                'is_bitcoin' => (int)Input::post('is_bitcoin'),
+                'payment_gateway' => Input::post('payment_gateway')
             ];
             PaymentModel::update($paymentData);
 
@@ -130,11 +135,13 @@ class Main extends Base
             'fullname' => $dbData->fullname,
             'publishable_key' => $dbData->publishableKey,
             'secret_key' => $dbData->secretKey,
+            'paypal_email' => $dbData->paypalEmail,
             'business_name' => $dbData->businessName,
             'item_name' => $dbData->itemName,
             'currency' => $dbData->currency,
             'amount' => $dbData->amount,
-            'is_bitcoin' => (bool)$dbData->isBitcoin
+            'is_bitcoin' => (bool)$dbData->isBitcoin,
+            'payment_gateway' => $dbData->paymentGateway
         ];
 
         View::create('forms/edit', 'Edit Your Details', $tplVars);
@@ -189,5 +196,10 @@ class Main extends Base
         if ($newPasswordHash = Password::needsRehash($password, $passwordHash)) {
             UserModel::updatePassword($newPasswordHash, $userId);
         }
+    }
+
+    private function getPaymentMethodName(string $gatewayName): string
+    {
+        return $gatewayName === Payment::STRIPE_GATEWAY ? 'getStripePaymentLink' : 'getPaypalPaymentLink';
     }
 }

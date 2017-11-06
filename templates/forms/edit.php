@@ -49,32 +49,58 @@
 </p>
 
 <p>
-    <?= $form->label('Stripe Publishable Key:')->forId('publishable_key') ?>
-    <?= $form->text('publishable_key')->value($publishable_key)->id('publishable_key')
-        ->required() ?>
-</p>
+    <?= $form->label('Payment Gateway:') ?>
 
-<p>
-    <?= $form->label('Stripe Secret Key:')->forId('secret_key') ?>
-    <?= $form->text('secret_key')->value($secret_key)->id('secret_key')
-        ->required() ?>
-</p>
-
-<p>
-    <?= $form->label('Allow Bitcoin Payment?') ?>
-
-    <?php if ($is_bitcoin): ?>
-        <?= $form->radio('is_bitcoin', 0) ?> No
+    <?php if ($payment_gateway === Controller\Payment::STRIPE_GATEWAY): ?>
+        <?= $form->radio('payment_gateway', 'stripe')->check() ?> Stripe
     <?php else: ?>
-        <?= $form->radio('is_bitcoin', 0)->check() ?> No
+        <?= $form->radio('payment_gateway', 'stripe') ?> Stripe
     <?php endif ?>
 
-    <?php if ($is_bitcoin): ?>
-        <?= $form->radio('is_bitcoin', 1)->check() ?> Yes
+    <?php if ($payment_gateway === Controller\Payment::PAYPAL_GATEWAY): ?>
+        <?= $form->radio('payment_gateway', 'paypal')->check() ?> PayPal
     <?php else: ?>
-        <?= $form->radio('is_bitcoin', 1) ?> Yes
+        <?= $form->radio('payment_gateway', 'paypal') ?> PayPal
     <?php endif ?>
 </p>
+
+<div id="stripe-settings" <?php if ($payment_gateway !== Controller\Payment::STRIPE_GATEWAY): ?>class="hidden"<?php endif ?>>
+    <p>
+        <?= $form->label('Stripe Publishable Key:')->forId('publishable_key') ?>
+        <?= $form->text('publishable_key')->value($publishable_key)->id('publishable_key')
+            ->required() ?>
+    </p>
+
+    <p>
+        <?= $form->label('Stripe Secret Key:')->forId('secret_key') ?>
+        <?= $form->text('secret_key')->value($secret_key)->id('secret_key')
+            ->required() ?>
+    </p>
+
+    <p>
+        <?= $form->label('Allow Bitcoin Payment?') ?>
+
+        <?php if ($is_bitcoin): ?>
+            <?= $form->radio('is_bitcoin', 0) ?> No
+        <?php else: ?>
+            <?= $form->radio('is_bitcoin', 0)->check() ?> No
+        <?php endif ?>
+
+        <?php if ($is_bitcoin): ?>
+            <?= $form->radio('is_bitcoin', 1)->check() ?> Yes
+        <?php else: ?>
+            <?= $form->radio('is_bitcoin', 1) ?> Yes
+        <?php endif ?>
+    </p>
+</div>
+
+<div id="paypal-settings" <?php if ($payment_gateway !== Controller\Payment::PAYPAL_GATEWAY): ?>class="hidden"<?php endif ?>>
+    <p>
+        <?= $form->label('Your PayPal Email:')->forId('paypal_email') ?>
+        <?= $form->text('paypal_email')->id('paypal_email')
+            ->value($paypal_email)->required() ?>
+    </p>
+</div>
 
 <p>
     <?= $form->submit('Update')->addClass('bold waves-effect btn-large') ?>

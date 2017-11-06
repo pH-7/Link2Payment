@@ -24,6 +24,7 @@ CREATE TABLE payment (
   paymentGateway enum('stripe','paypal') NOT NULL DEFAULT 'stripe',
   publishableKey varchar(40) DEFAULT NULL,
   secretKey varchar(40) DEFAULT NULL,
+  paypalEmail varchar(120) NOT NULL,
   businessName varchar(100) NOT NULL,
   itemName varchar(100) NOT NULL,
   currency char(3) NOT NULL DEFAULT 'USD',

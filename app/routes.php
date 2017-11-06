@@ -19,7 +19,8 @@ if (!User::isLoggedIn()) {
 Route::getAndPost('/signup', 'Main@signup');
 Route::getAndPost('/signin', 'Main@signin');
 Route::get('/stripe', 'Payment@stripe');
-Route::post('/checkout', 'Payment@checkout');
+Route::post('/stripe-checkout', 'Payment@stripecheckout');
+Route::get('/paypal', 'Payment@paypal');
 
 if (User::isLoggedIn()) { // Only for logged in users
     Route::getAndPost('/edit', 'Main@edit');
