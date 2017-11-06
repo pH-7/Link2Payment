@@ -48,8 +48,8 @@ class User
         return site_url("s/$hash");
     }
 
-        public static function getPaypalPaymentLink(string $hash): string
-        {
-            return site_url("p/$hash");
-        }
+    public static function getPaypalPaymentLink(string $hash): string
+    {
+        return site_url("p/$hash");
+    }
 }
