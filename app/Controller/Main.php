@@ -28,8 +28,8 @@ class Main extends Base
     {
         $userId = User::getId();
         $dbData = UserModel::getDetails($userId);
-        $methodName = ($dbData->paymentGateway === Payment::STRIPE_GATEWAY) ? 'getStripePaymentLink' : 'getPaypalPaymentLink';
-        $tplVars = ['fullname' => $dbData->fullname, 'payment_link' => User::$methodName($hash)];
+        $methodName = $this->getPaymentMethodName($dbData->paymentGateway);
+        $tplVars = ['fullname' => $dbData->fullname, 'payment_link' => User::$methodName($dbData->hash)];
 
         View::create('home', 'Welcome!', $tplVars);
     }
@@ -196,5 +196,10 @@ class Main extends Base
         if ($newPasswordHash = Password::needsRehash($password, $passwordHash)) {
             UserModel::updatePassword($newPasswordHash, $userId);
         }
+    }
+
+    private function getPaymentMethodName(string $gatewayName): string
+    {
+        return $gatewayName === Payment::STRIPE_GATEWAY ? 'getStripePaymentLink' : 'getPaypalPaymentLink';
     }
 }
