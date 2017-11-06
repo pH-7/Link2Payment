@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="<?php echo site_url('node_modules/materialize-css/dist/css/materialize.min.css') ?>">
-    <link rel="stylesheet" href="<?php echo site_url('node_modules/material-icons/css/material-icons.min.css') ?>">
-    <link rel="stylesheet" href="<?php echo site_url('node_modules/flag-icon-css/css/flag-icon.min.css') ?>">
-    <link rel="stylesheet" href="<?php echo asset_url('css/style.css') ?>">
+    <link rel="stylesheet" href="<?= site_url('node_modules/materialize-css/dist/css/materialize.min.css') ?>">
+    <link rel="stylesheet" href="<?= site_url('node_modules/material-icons/css/material-icons.min.css') ?>">
+    <link rel="stylesheet" href="<?= site_url('node_modules/flag-icon-css/css/flag-icon.min.css') ?>">
+    <link rel="stylesheet" href="<?= asset_url('css/style.css') ?>">
     <?php include 'analytics.inc.php' ?>
 
     <!--[if lt IE 9]>
@@ -29,12 +29,12 @@
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
       <ul id="nav-mobile" class="right">
         <?php if (!Core\User::isLoggedIn()): ?>
-          <li><a href="<?php echo site_url('signup') ?>" class="yellow-text bold underline">Sign Up</a></li>
-          <li><a href="<?php echo site_url('signin') ?>">Sign In</a></li>
+          <li><a href="<?= site_url('signup') ?>" class="yellow-text bold underline">Sign Up</a></li>
+          <li><a href="<?= site_url('signin') ?>">Sign In</a></li>
         <?php else: ?>
-          <li><a href="<?php echo site_url('edit') ?>">Edit Details</a></li>
-          <li><a href="<?php echo site_url('password') ?>">Change Password</a></li>
-          <li><a href="<?php echo site_url('signout') ?>">Sign Out</a></li>
+          <li><a href="<?= site_url('edit') ?>">Edit Details</a></li>
+          <li><a href="<?= site_url('password') ?>">Change Password</a></li>
+          <li><a href="<?= site_url('signout') ?>">Sign Out</a></li>
         <?php endif ?>
       </ul>
     </div>
