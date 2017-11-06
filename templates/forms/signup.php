@@ -70,13 +70,13 @@
     <p class="italic small">Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your Stripe Account.</p>
     <p>
         <?= $form->label('Your Stripe Publishable Key:')->forId('publishable_key') ?>
-        <?= $form->text('publishable_key')->id('publishable_key')
+        <?= $form->text('publishable_key')->id('publishable_key')->placeholder('sk_live_************************')
             ->required() ?>
     </p>
 
     <p>
         <?= $form->label('Your Stripe Secret Key:')->forId('secret_key') ?>
-        <?= $form->text('secret_key')->id('secret_key')
+        <?= $form->text('secret_key')->id('secret_key')->placeholder('pk_live_************************')
             ->required() ?>
     </p>
 </div>
