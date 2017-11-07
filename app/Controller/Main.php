@@ -117,28 +117,42 @@ class Main extends Base
         $tplVars = [];
 
         if (Input::post('edit')) {
-            $userData = [
-                'user_id' => $userId,
-                'fullname' => Input::post('fullname')
-            ];
-            UserModel::update($userData);
+            $paymentGateway = Input::post('payment_gateway');
+            $publishableKey = Input::post('publishable_key');
+            $secretKey = Input::post('secret_key');
+            $paypalEmail = Input::post('paypal_email');
 
-            $paymentData = [
-                'user_id' => $userId,
-                'publishable_key' => Input::post('publishable_key'),
-                'secret_key' => Input::post('secret_key'),
-                'paypal_email' => Input::post('paypal_email'),
-                'business_name' => Input::post('business_name'),
-                'item_name' => Input::post('item_name'),
-                'currency' => Input::post('currency'),
-                'amount' => Input::post('amount'),
-                'is_bitcoin' => (int)Input::post('is_bitcoin'),
-                'payment_gateway' => Input::post('payment_gateway')
-            ];
-            PaymentModel::update($paymentData);
+            if ($paymentGateway === Payment::STRIPE_GATEWAY &&
+                (!$publishableKey || !$secretKey)
+            ) {
+                $tplVars += [View::ERROR_MSG_KEY => 'Publishable/Secret Keys are mandatory'];
+            } elseif ($paymentGateway === Payment::PAYPAL_GATEWAY && !$paypalEmail) {
+                $tplVars += [View::ERROR_MSG_KEY => 'PayPal Email is mandatory'];
+            } else {
+                $userData = [
+                    'user_id' => $userId,
+                    'fullname' => Input::post('fullname')
+                ];
+                UserModel::update($userData);
 
-            $tplVars += [View::SUCCESS_MSG_KEY => 'Successfully saved!'];
+                $paymentData = [
+                    'user_id' => $userId,
+                    'publishable_key' => $publishableKey,
+                    'secret_key' => $secretKey,
+                    'paypal_email' => $paypalEmail,
+                    'business_name' => Input::post('business_name'),
+                    'item_name' => Input::post('item_name'),
+                    'currency' => Input::post('currency'),
+                    'amount' => Input::post('amount'),
+                    'is_bitcoin' => (int)Input::post('is_bitcoin'),
+                    'payment_gateway' => $paymentGateway
+                ];
+                PaymentModel::update($paymentData);
+
+                $tplVars += [View::SUCCESS_MSG_KEY => 'Successfully saved!'];
+            }
         }
+
 
         $dbData = UserModel::getDetails($userId);
 
