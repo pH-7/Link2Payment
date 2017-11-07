@@ -11,6 +11,10 @@
     <i class="large material-icons">av_timer</i>
 
     <p>
+        Having "<abbr title="SSL">https</abbr>" on your wenbsite won't be a problem anymore! You even don't need a website anymore. Just add your Stripe (or PayPal) link on your mobile app, in your emails, on forums, on your FB page, Instagram post, ask for donations, etc.
+    </p>
+
+    <p>
         <span class="bold">"One Account" = "One Stripe Link Form" (to share anywhere with anyone)</span><br />
         <span class="small">You will need more accounts (with other valid email addresses) if you need more stripe links.</span>
     </p>
