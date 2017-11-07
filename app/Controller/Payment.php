@@ -41,7 +41,7 @@ class Payment extends Base
 
             View::create('forms/stripe', $dbData->businessName, $tplVars);
         } else {
-            $this->notFound();
+            $this->notFoundPage();
         }
     }
 
@@ -116,7 +116,7 @@ class Payment extends Base
 
             redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
         } else {
-            $this->notFound();
+            $this->notFoundPage();
         }
     }
 

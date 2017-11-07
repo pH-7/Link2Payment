@@ -79,7 +79,7 @@ class Route
             } else {
                 if (!empty(self::$httpMethod) && $_SERVER['REQUEST_METHOD'] !== self::$httpMethod) {
                     //throw new InvalidArgumentException(sprintf('HTTP Method Must be %s', self::$httpMethod));
-                    (new BaseController)->notFound();
+                    (new BaseController)->notFoundPage();
                 }
 
                 $split = explode(self::SEPARATOR, $value);
@@ -96,11 +96,11 @@ class Route
                         unset($action);
                     }
                 } catch (ReflectionException $except) {
-                    (new BaseController)->notFound();
+                    (new BaseController)->notFoundPage();
                 }
             }
             //throw new RuntimeException('Method "' . $method . '" was not found in "' . $class . '" class.');
-            (new BaseController)->notFound();
+            (new BaseController)->notFoundPage();
         }
     }
 
