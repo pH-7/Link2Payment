@@ -9,10 +9,10 @@ declare(strict_types = 1);
 
 namespace PH7App\Core;
 
-use ReflectionClass;
-use ReflectionMethod;
-use ReflectionException;
 use PH7App\Controller\Base as BaseController;
+use ReflectionClass;
+use ReflectionException;
+use ReflectionMethod;
 
 class Route
 {
