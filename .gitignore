@@ -1,6 +1,5 @@
 /vendor
 /node_modules
-composer.lock
 composer.phar
 .env
 
