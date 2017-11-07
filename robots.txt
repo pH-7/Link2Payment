@@ -1,0 +1,11 @@
+User-agent: *
+
+# Don't index the non-friendly URLs
+Disallow: /*?*uri=*
+
+# Don't index the login page
+Disallow: /signin/
+
+# Don't index the payment pages
+Disallow: /s/*
+Disallow: /p/*
