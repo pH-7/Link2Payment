@@ -12,6 +12,7 @@ namespace PH7App\Controller;
 use PH7App\Core\Input;
 use PH7App\Core\View;
 use PH7App\Model\Payment as PaymentModel;
+use stdClass;
 use Stripe\Charge;
 use Stripe\Stripe;
 
@@ -104,15 +105,7 @@ class Payment extends Base
         $dbData = PaymentModel::getPaymentInfo($hash);
 
         if (!empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY) {
-            $queries = [
-                'cmd' => '_xclick',
-                'business' => $dbData->paypalEmail,
-                'item_name' => $dbData->itemName,
-                'amount' => $dbData->amount,
-                'currency_code' => $dbData->currency
-            ];
-            $urlQueries = http_build_query($queries);
-
+            $urlQueries = $this->getPaypalUrlQueries();
             redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
         } else {
             $this->notFoundPage();
@@ -132,5 +125,18 @@ class Payment extends Base
     private function getIntegerAmount(string $sPrice)
     {
         return str_replace('.', '', $sPrice);
+    }
+
+    private function getPaypalUrlQueries(stdClass $dbData): string
+    {
+        $queries = [
+            'cmd' => '_xclick',
+            'business' => $dbData->paypalEmail,
+            'item_name' => $dbData->itemName,
+            'amount' => $dbData->amount,
+            'currency_code' => $dbData->currency
+        ];
+
+        return http_build_query($queries);
     }
 }
