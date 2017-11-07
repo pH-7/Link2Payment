@@ -105,7 +105,7 @@ class Payment extends Base
         $dbData = PaymentModel::getPaymentInfo($hash);
 
         if (!empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY) {
-            $urlQueries = $this->getPaypalUrlQueries();
+            $urlQueries = $this->getPaypalUrlQueries($dbData);
             redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
         } else {
             $this->notFoundPage();
