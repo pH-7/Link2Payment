@@ -53,10 +53,10 @@ class Payment extends Base
         Stripe::setApiKey($dbData->secretKey);
 
         try {
-            $oCharge = Charge::create(
+            $charge = Charge::create(
                 [
                     'amount' => $this->getIntegerAmount($dbData->amount),
-                    'currency' => $dbData->hash,
+                    'currency' => $dbData->currency,
                     'source' => Input::post('stripeToken'),
                     'description' => sprintf('Membership charged for %s', Input::post('stripeEmail'))
                 ]
