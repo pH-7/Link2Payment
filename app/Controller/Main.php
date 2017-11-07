@@ -34,6 +34,30 @@ class Main extends Base
         View::create('home', 'Welcome!', $tplVars);
     }
 
+    public function signin(): void
+    {
+        $data = [];
+
+        if (Input::post('signin')) {
+            $email = Input::post('email');
+            $password = Input::post('password');
+            $dbPasswordHashed = UserModel::getPassword($email);
+
+            if (Password::verify($password, $dbPasswordHashed)) {
+                $userId = UserModel::getId($email);
+                User::setAuth($userId, $email);
+
+                $this->updatePasswordHashIfNeeded($password, $dbPasswordHashed, $userId);
+
+                redirect('/');
+            } else {
+                $data = [View::ERROR_MSG_KEY => 'Wrong email/password.'];
+            }
+        }
+
+        View::create('forms/signin', 'Sign In', $data);
+    }
+
     public function signup(): void
     {
         $data = [];
@@ -85,30 +109,6 @@ class Main extends Base
         }
 
         View::create('forms/signup', 'Sign In for Free!', $data);
-    }
-
-    public function signin(): void
-    {
-        $data = [];
-
-        if (Input::post('signin')) {
-            $email = Input::post('email');
-            $password = Input::post('password');
-            $dbPasswordHashed = UserModel::getPassword($email);
-
-            if (Password::verify($password, $dbPasswordHashed)) {
-                $userId = UserModel::getId($email);
-                User::setAuth($userId, $email);
-
-                $this->updatePasswordHashIfNeeded($password, $dbPasswordHashed, $userId);
-
-                redirect('/');
-            } else {
-                $data = [View::ERROR_MSG_KEY => 'Wrong email/password.'];
-            }
-        }
-
-        View::create('forms/signin', 'Sign In', $data);
     }
 
     public function edit(): void
