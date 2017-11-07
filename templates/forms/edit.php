@@ -95,7 +95,7 @@
 <div id="paypal-settings" <?php if ($payment_gateway !== Controller\Payment::PAYPAL_GATEWAY): ?>class="hidden"<?php endif ?>>
     <p>
         <?= $form->label('Your PayPal Email:')->forId('paypal_email') ?>
-        <?= $form->text('paypal_email')->id('paypal_email')->value($paypal_email) ?>
+        <?= $form->email('paypal_email')->id('paypal_email')->value($paypal_email) ?>
     </p>
 </div>
 
