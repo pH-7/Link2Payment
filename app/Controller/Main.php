@@ -38,7 +38,7 @@ class Main extends Base
     {
         $data = [];
 
-        if (!$this->isSpamBot() && Input::post('signup')) {
+        if (Input::post('signup') && !$this->isSpamBot()) {
             $email = Input::post('email');
 
             $paymentGateway = Input::post('payment_gateway');
