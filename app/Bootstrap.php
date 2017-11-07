@@ -45,7 +45,10 @@ class Bootstrap
 
     public function initializeDebugging(): void
     {
-        if ((bool)getenv('DEBUG_MODE')) {
+        // First, convert "true/false" string from phpdotenv to boolean
+        $debugMode = filter_var(getenv('DEBUG_MODE'), FILTER_VALIDATE_BOOLEAN);
+
+        if ($debugMode) {
             error_reporting(E_ALL);
             ini_set('display_errors', 'On');
         } else {
