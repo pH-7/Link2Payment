@@ -67,7 +67,10 @@
 </p>
 
 <div id="stripe-settings">
-    <p class="italic small">Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your Stripe Account.</p>
+    <p class="italic small">
+        Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your <a href="https://dashboard.stripe.com/register" target="_blank" rel="noopener noreferrer">Stripe Account</a>.
+    </p>
+
     <p>
         <?= $form->label('Your Stripe Publishable Key:')->forId('publishable_key') ?>
         <?= $form->text('publishable_key')->id('publishable_key')->placeholder('sk_live_************************')
