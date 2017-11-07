@@ -153,7 +153,7 @@ class Main extends Base
             }
         }
 
-
+        // Get user data from DB to fulfill the form field values
         $dbData = UserModel::getDetails($userId);
 
         $tplVars += [
