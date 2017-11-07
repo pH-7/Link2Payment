@@ -4,7 +4,9 @@ Get your Stripe payment link to get paid everywhere, in emails, on a non-SSL web
 
 Psst! It now works also with PayPal! Get easier your PayPal Payment Link than generating a paypal button through the old and painful Paypal website.
 
-The website is based on a homemade lightweight PHP framework (ideal for very small web apps). Feel free to use it if you like it :smiley:
+**Link2Payment** is based on the same code (little bit improved though) than another startup idea called "[MyNewDream.eu](https://github.com/pH-7/MyDreamLife.eu)"
+
+The project is based on a homemade lightweight PHP framework (ideal for very small web apps). Feel free to use it if you like it :smiley:
 
 ![Payment2Link](screenshots/Stripe-Payment-Link-Link2Payment.png)
 
@@ -20,6 +22,11 @@ The website is based on a homemade lightweight PHP framework (ideal for very sma
 My name is [Pierre-Henry Soria](http://ph7.me) :smiley:
 
 You can contact me at: *hi {[AT]} ph7 [{D0T}] me*
+
+
+## Project URL
+
+[https://link2payment.co](https://link2payment.co) :smiley:
 
 
 ## License
