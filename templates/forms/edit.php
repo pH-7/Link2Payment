@@ -65,6 +65,10 @@
 </p>
 
 <div id="stripe-settings" <?php if ($payment_gateway !== Controller\Payment::STRIPE_GATEWAY): ?>class="hidden"<?php endif ?>>
+    <p class="italic small">
+        Get your <a href="https://stripe.com/docs/dashboard#api-keys" target="_blank" rel="noopener noreferrer">publishable/secret API keys</a> from your Stripe Account.
+    </p>
+
     <p>
         <?= $form->label('Stripe Publishable Key:')->forId('publishable_key') ?>
         <?= $form->text('publishable_key')->value($publishable_key)->id('publishable_key') ?>
