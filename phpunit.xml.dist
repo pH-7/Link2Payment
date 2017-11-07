@@ -13,7 +13,7 @@
         bootstrap="vendor/autoload.php">
 
     <testsuites>
-        <testsuite name="MyDreamLife Test Suite">
+        <testsuite name="Link2Payment Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
