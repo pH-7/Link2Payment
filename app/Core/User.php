@@ -13,6 +13,8 @@ use PH7App\Core\Session;
 
 class User
 {
+    const HASH_LENGTH = 4; // When get more user, will need to increase it!
+
     public static function setAuth(int $userId, string $email): void
     {
         Session::set('userId', $userId);
@@ -35,12 +37,13 @@ class User
     }
 
     /**
-     * @return string Returns a unique 32 character string.
+     * @return string Returns a unique ID string.
      */
     public static function generateHash(): string
     {
-        $prefix = 'a' . mt_rand();
-        return md5(uniqid($prefix, true));
+        $prefix = (string) mt_rand();
+
+        return substr(md5(uniqid($prefix, true)), 0, static::HASH_LENGTH);
     }
 
     public static function getStripePaymentLink(string $hash): string
