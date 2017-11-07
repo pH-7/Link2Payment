@@ -68,12 +68,12 @@ class Payment extends Base
             View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
             return;
         }
-        catch (\Stripe\Error\Card $oE) {
+        catch (\Stripe\Error\Card $except) {
             // The card has been declined
-            $this->errorPage($oE->getMessage());
+            $this->errorPage($except->getMessage());
         }
-        catch (\Stripe\Error\Base $oE) {
-            $this->errorPage($oE->getMessage());
+        catch (\Stripe\Error\Base $except) {
+            $this->errorPage($except->getMessage());
         }
     }
 
