@@ -5,6 +5,8 @@
  * @license        GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
  */
 
+declare(strict_types = 1);
+
 namespace PH7App;
 
 use Exception;
