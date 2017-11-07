@@ -17,11 +17,17 @@ class Base
     {
     }
 
-    public function notFound(): void
+    public function notFoundPage(): void
     {
         header('HTTP/1.1 404 Not Found');
 
         View::create('not-found', 'Page Not Found');
+        exit;
+    }
+
+    public function errorPage(string $message): void
+    {
+        View::create('error', 'Error Occurred', ['message' => $message]);
         exit;
     }
 }

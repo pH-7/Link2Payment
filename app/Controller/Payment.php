@@ -65,16 +65,15 @@ class Payment extends Base
             $this->sendEmailToBuyer(['name' => $dbData->name, 'email' => $dbData->email]);
 
             View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
+            return;
         }
         catch (\Stripe\Error\Card $oE) {
             // The card has been declined
-            // Do nothing here as "$this->bStatus" is by default FALSE and so it will display "Error occurred" msg later
+            $this->errorPage($oE->getMessage());
         }
         catch (\Stripe\Error\Base $oE) {
-
+            $this->errorPage($oE->getMessage());
         }
-
-        View::create('forms/stripe', $dbData->businessName);
     }
 
     /**
