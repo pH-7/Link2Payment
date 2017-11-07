@@ -63,10 +63,9 @@ class Payment extends Base
             );
 
             $this->sendEmailToSeller();
-            $this->sendEmailToBuyer(['name' => $dbData->name, 'email' => $dbData->email]);
+            $this->sendEmailToBuyer(['name' => $dbData->fullname, 'email' => $dbData->email]);
 
             View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
-            return;
         }
         catch (\Stripe\Error\Card $except) {
             // The card has been declined
