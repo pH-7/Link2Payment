@@ -12,7 +12,8 @@ namespace PH7App\Controller;
 use PH7App\Core\Input;
 use PH7App\Core\View;
 use PH7App\Model\Payment as PaymentModel;
-use function PH7App\site_name;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class Payment extends Base
 {
@@ -49,10 +50,10 @@ class Payment extends Base
         $hash = Input::post('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
-        \Stripe\Stripe::setApiKey($dbData->secretKey);
+        Stripe::setApiKey($dbData->secretKey);
 
         try {
-            $oCharge = \Stripe\Charge::create(
+            $oCharge = Charge::create(
                 [
                     'amount' => $this->getIntegerAmount($dbData->amount),
                     'currency' => $dbData->hash,
