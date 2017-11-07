@@ -52,15 +52,15 @@
     <?= $form->label('Payment Gateway:') ?>
 
     <?php if ($payment_gateway === Controller\Payment::STRIPE_GATEWAY): ?>
-        <?= $form->radio('payment_gateway', 'stripe')->check() ?> Stripe
+        <?= $form->radio('payment_gateway', 'stripe')->id('payment_gateway')->check() ?> Stripe
     <?php else: ?>
-        <?= $form->radio('payment_gateway', 'stripe') ?> Stripe
+        <?= $form->radio('payment_gateway', 'stripe')->id('payment_gateway') ?> Stripe
     <?php endif ?>
 
     <?php if ($payment_gateway === Controller\Payment::PAYPAL_GATEWAY): ?>
-        <?= $form->radio('payment_gateway', 'paypal')->check() ?> PayPal
+        <?= $form->radio('payment_gateway', 'paypal')->id('payment_gateway')->check() ?> PayPal
     <?php else: ?>
-        <?= $form->radio('payment_gateway', 'paypal') ?> PayPal
+        <?= $form->radio('payment_gateway', 'paypal')->id('payment_gateway') ?> PayPal
     <?php endif ?>
 </p>
 
