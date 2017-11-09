@@ -9,7 +9,7 @@ $(document).ready(function() {
         $('span#currency').text($('select').val());
     });
 
-    $('input#payment_gateway').on('click', function () {
+    $('input.payment_gateway').on('click', function () {
         if ($(this).val() == 'stripe') {
             showStripeFields()
         } else {
