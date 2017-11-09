@@ -44,6 +44,14 @@ class SessionTest extends TestCase
         $this->assertSame($cookieValue, Session::showCookie('iate'));
     }
 
+    public function testRemoveCookie(): void
+    {
+        $_COOKIE['nothing'] = 'lalala';
+        Session::removeCookie('nothing');
+
+        $this->assertFalse(Session::showCookie('nothing'));
+    }
+
     protected function tearDown()
     {
         parent::tearDown();
