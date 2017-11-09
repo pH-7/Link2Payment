@@ -69,13 +69,3 @@ abbr {
 img, video, iframe {
     max-width: 100%;
 }
-
-/** Overwrite some Materialize silly things **/
-label {
-    display: block !important;
-}
-input[type=radio], input[type=radio]:checked {
-    position: relative !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}

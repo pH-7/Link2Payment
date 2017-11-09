@@ -49,18 +49,18 @@
 </p>
 
 <p>
-    <?= $form->label('Payment Gateway:') ?>
+    <?= $form->label('Payment Gateway:') ?><br>
 
     <?php if ($payment_gateway === Controller\Payment::STRIPE_GATEWAY): ?>
-        <?= $form->radio('payment_gateway', 'stripe')->id('payment_gateway')->check() ?> Stripe
+        <?= $form->radio('payment_gateway', 'stripe')->class('payment_gateway')->id('stripe')->check() ?> <?= $form->label('Stripe')->forId('stripe') ?>
     <?php else: ?>
-        <?= $form->radio('payment_gateway', 'stripe')->id('payment_gateway') ?> Stripe
+        <?= $form->radio('payment_gateway', 'stripe')->class('payment_gateway')->id('stripe') ?> <?= $form->label('Stripe')->forId('stripe') ?>
     <?php endif ?>
 
     <?php if ($payment_gateway === Controller\Payment::PAYPAL_GATEWAY): ?>
-        <?= $form->radio('payment_gateway', 'paypal')->id('payment_gateway')->check() ?> PayPal
+        <?= $form->radio('payment_gateway', 'paypal')->class('payment_gateway')->id('paypal')->check() ?> <?= $form->label('PayPal')->forId('paypal') ?>
     <?php else: ?>
-        <?= $form->radio('payment_gateway', 'paypal')->id('payment_gateway') ?> PayPal
+        <?= $form->radio('payment_gateway', 'paypal')->class('payment_gateway')->id('paypal') ?> <?= $form->label('PayPal')->forId('paypal') ?>
     <?php endif ?>
 </p>
 
@@ -80,18 +80,18 @@
     </p>
 
     <p>
-        <?= $form->label('Allow Bitcoin Payment?') ?>
+        <?= $form->label('Allow Bitcoin Payment?') ?><br>
 
         <?php if ($is_bitcoin): ?>
-            <?= $form->radio('is_bitcoin', 0) ?> No
+            <?= $form->radio('is_bitcoin', 0)->id('no_bitcoin') ?> <?= $form->label('No')->forId('no_bitcoin') ?>
         <?php else: ?>
-            <?= $form->radio('is_bitcoin', 0)->check() ?> No
+            <?= $form->radio('is_bitcoin', 0)->id('no_bitcoin')->check() ?> <?= $form->label('No')->forId('no_bitcoin') ?>
         <?php endif ?>
 
         <?php if ($is_bitcoin): ?>
-            <?= $form->radio('is_bitcoin', 1)->check() ?> Yes
+            <?= $form->radio('is_bitcoin', 1)->id('yes_bitcoin')->check() ?> <?= $form->label('Yes')->forId('yes_bitcoin') ?>
         <?php else: ?>
-            <?= $form->radio('is_bitcoin', 1) ?> Yes
+            <?= $form->radio('is_bitcoin', 1)->id('yes_bitcoin') ?> <?= $form->label('Yes')->forId('yes_bitcoin') ?>
         <?php endif ?>
     </p>
 </div>
