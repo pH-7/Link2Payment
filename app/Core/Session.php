@@ -58,7 +58,7 @@ class Session
      */
     public static function setCookie(string $name, $value): void
     {
-        setcookie($name, $value, time() + 60 * 60 * 24 * 365, '/', false);
+        setcookie($name, $value, time() + 60 * 60 * 24 * 365, '/');
     }
 
     /**
@@ -72,7 +72,7 @@ class Session
         $_COOKIE[$name] = [];
 
         // We ask the browser to delete the cookie
-        setcookie($name, '', time() - 60 * 60 * 24 * 365, '/', false);
+        setcookie($name, '', time() - 60 * 60 * 24 * 365, '/');
 
         // Then, we delete the cookie value locally to avoid using it by mistake in following our script
         unset($_COOKIE[$name]);
