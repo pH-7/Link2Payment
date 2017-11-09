@@ -26,7 +26,7 @@ class InputTest extends TestCase
         $this->assertFalse(Input::post('nothing'));
     }
 
-    public function testHtmlGetWithEntities(): void
+    public function testGetWithHtmlEntities(): void
     {
         $_GET['hi'] = '<b>Hi All</b>';
 
