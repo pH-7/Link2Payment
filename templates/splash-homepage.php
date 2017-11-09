@@ -1,7 +1,7 @@
 <?php namespace PH7App; ?>
 
 <div class="center">
-    <p>Get your Stripe payment link to get <strong>paid everywhere</strong>, in emails, on a <strong>non-SSL website</strong>, donation, from an ebook, in forum posts, on real book sheets, ... (by just displaying the payment link!).</p>
+    <p>Get your Stripe payment link and get <strong>paid anywhere</strong>. In emails, on a <strong>non-SSL website</strong>, donation, from an ebook, in forum posts, paper book, ... (by just putting your unique payment link!).</p>
     <i class="large material-icons">autorenew</i>
 
     <i class="large material-icons">business_center</i>
@@ -11,7 +11,8 @@
     <i class="large material-icons">av_timer</i>
 
     <p>
-        Having "<abbr title="SSL">https</abbr>" on your wenbsite won't be a problem anymore! You even don't need a website anymore. Just add your Stripe (or PayPal) link on your mobile app, in your emails, on forums, on your FB page, Instagram post, ask for donations, etc.
+        Not having "<abbr title="SSL certificate">https</abbr>" on your website won't be a problem anymore! You don't even need a website anymore! Just put your Stripe (or PayPal) link on your mobile app, in your emails, on forums, on your FB page, Instagram post, or even on your paper book!<br />
+        <small>You will be notified by email each time someone buys the item from your link.</small>
     </p>
 
     <p>
