@@ -24,16 +24,16 @@ I'm [Pierre-Henry Soria](http://ph7.me). A passionate Belgian engineer :chocolat
 You can contact me at *hi {[AT]} ph7 [{D0T}] me*
 
 
+## Project URL
+
+[https://link2payment.co](https://link2payment.co) :smiley:
+
+
 ## Setting Up
 
 * Run composer to install the project dependencies
 * Create a database and import *database.sql* file
 * Rename `.env.example` to `.env` and edit SITE_URL and DB details
-
-
-## Project URL
-
-[https://link2payment.co](https://link2payment.co) :smiley:
 
 
 ## License
