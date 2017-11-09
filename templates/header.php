@@ -29,7 +29,7 @@
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
       <ul id="nav-mobile" class="right">
         <?php if (!Core\User::isLoggedIn()): ?>
-          <li><a href="<?= site_url('signup') ?>" class="yellow-text bold underline">Sign Up</a></li>
+          <li><a href="<?= site_url('signup') ?>" class="red-text text-lighten-3 bold underline">Sign Up</a></li>
           <li><a href="<?= site_url('signin') ?>">Sign In</a></li>
         <?php else: ?>
           <li><a href="<?= site_url('edit') ?>">Edit Details</a></li>
