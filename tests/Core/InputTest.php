@@ -16,7 +16,7 @@ class InputTest extends TestCase
 {
     public function testPostWithHtmlEntities(): void
     {
-        $_POST['hi'] ='<b>Hi All</b>';
+        $_POST['hi'] = '<b>Hi All</b>';
 
         $this->assertSame('Hi All', Input::post('hi'));
     }
@@ -28,7 +28,7 @@ class InputTest extends TestCase
 
     public function testHtmlGetWithEntities(): void
     {
-        $_GET['hi'] ='<b>Hi All</b>';
+        $_GET['hi'] = '<b>Hi All</b>';
 
         $this->assertSame('Hi All', Input::get('hi'));
     }
