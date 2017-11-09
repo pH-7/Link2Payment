@@ -69,7 +69,3 @@ abbr {
 img, video, iframe {
     max-width: 100%;
 }
-.heart:after {
-    color: #FF4D4D;
-    content: '♥';
-}
