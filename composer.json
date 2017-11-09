@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Core\\": "app/Core"
+      "PH7App\\Core\\": "app/Core"
     }
   }
 }
