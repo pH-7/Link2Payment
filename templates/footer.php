@@ -23,11 +23,14 @@
     <div class="footer-copyright">
       <div class="container">
           <div class="row">
-              <div class="col l9 s12">
-                  Proud to be an <a class="orange-text text-lighten-3" href="https://github.com/pH-7/Link2Payment">open source</a> project
+              <div class="col l4 s12">
+                  Proud to be an <a class="red-text text-lighten-3" href="https://github.com/pH-7/Link2Payment">open source</a> project
               </div>
-              <div class="col l3 s12">
-                  <a class="orange-text text-lighten-3" rel="nofollow" href="mailto:<?= getenv('ADMIN_EMAIL') ?>?subject=Regarding Link2Payment">Contact</a>
+              <div class="col l6 s12">
+                  Made with <span class="heart"></span> in Vancouver 🇨🇦 by <a class="red-text text-lighten-3" href="http://ph7.me">Pierre-Henry</a>
+              </div>
+              <div class="col l2 s12">
+                  <a class="red-text text-lighten-3" rel="nofollow" href="mailto:<?= getenv('ADMIN_EMAIL') ?>?subject=Regarding Link2Payment">Contact</a>
               </div>
           </div>
       </div>
