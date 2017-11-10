@@ -38,6 +38,38 @@ class InputTest extends TestCase
         $this->assertFalse(Input::get('lalala'));
     }
 
+    public function testInvalidIp()
+    {
+        $_SERVER['REMOTE_ADDR'] = '129292';
+
+        // When it's an invalid IP, it returns "127.0.0.1" instead
+        $this->assertSame('127.0.0.1', Input::userIp());
+    }
+
+    public function testValidRemoteAddrIp()
+    {
+        $_SERVER['REMOTE_ADDR'] = '108.170.3.142';
+
+        // When it's a valid IP, it returns it
+        $this->assertSame('108.170.3.142', Input::userIp());
+    }
+
+    public function testValidXForwardedForIp()
+    {
+        $_SERVER['HTTP_X_FORWARDED_FOR'] = '208.181.244.194';
+
+        // When it's a valid IP, it returns it
+        $this->assertSame('208.181.244.194', Input::userIp());
+    }
+
+    public function testValidClientIp()
+    {
+        $_SERVER['HTTP_CLIENT_IP'] = '208.181.244.199';
+
+        // When it's a valid IP, it returns it
+        $this->assertSame('208.181.244.199', Input::userIp());
+    }
+
     protected function tearDown()
     {
         unset($_POST, $_GET);
