@@ -21,7 +21,7 @@ class Input
      */
     public static function userIp()
     {
-        $ip = $_SERVER['REMOTE_ADDR']; // Default value
+        $ip = $_SERVER['REMOTE_ADDR'] ?? ''; // Use Null Coalescing opt if not defined.
 
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
