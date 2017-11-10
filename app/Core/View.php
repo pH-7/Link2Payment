@@ -39,7 +39,8 @@ class View
         if (is_file($viewFullPath)) {
             include $viewFullPath;
         } else {
-            throw new RuntimeException('Could not find view: "' . $viewFullPath . '"');
+            $errorMessage = sprintf('Could not find view: "%s"', $viewFullPath);
+            throw new RuntimeException($errorMessage);
         }
 
         if (!$paritals) {
