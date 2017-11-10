@@ -19,7 +19,7 @@ class Input
      *
      * @return string The IP address.
      */
-    public static function userIp()
+    public static function userIp(): string
     {
         $ip = $_SERVER['REMOTE_ADDR'] ?? ''; // Use Null Coalescing opt if not defined.
 
