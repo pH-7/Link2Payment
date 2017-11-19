@@ -45,7 +45,7 @@
         <div class="container">
           <h2 class="header center orange-text">Get your Stripe Payment Link</h2>
           <div class="row center">
-            <h5 class="header col s12 light">Get paid with just a simple link to share anywhere with anyone</h5>
+            <h5 class="header col s12 light">Get paid with just a simple link to share anywhere with anyone!</h5>
           </div>
         </div>
       </header>
