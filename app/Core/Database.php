@@ -16,10 +16,10 @@ use PDOStatement;
 class Database
 {
     /** @var null|PDO */
-    private static $_pdo = null;
+    private static $pdo = null;
 
     /** @var null|PDOStatement */
-    private static $_stmt = null;
+    private static $stmt = null;
 
     /**
      * Establishes a connection.
@@ -31,8 +31,8 @@ class Database
     public static function connect(array $dbDetails = array())
     {
         try {
-            static::$_pdo = new PDO('mysql:host=' . $dbDetails['dbHost'] . ';dbname=' . $dbDetails['dbName'], $dbDetails['dbUser'], $dbDetails['dbPass']);
-            static::$_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            static::$pdo = new PDO('mysql:host=' . $dbDetails['dbHost'] . ';dbname=' . $dbDetails['dbName'], $dbDetails['dbUser'], $dbDetails['dbPass']);
+            static::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $error) {
             exit('<h1>An unexpected database error occured.</h1>');
         }
@@ -49,14 +49,14 @@ class Database
      */
     public static function query($sql, array $binds = array(), bool $execute = true): void
     {
-        static::$_stmt = static::$_pdo->prepare($sql);
+        static::$stmt = static::$pdo->prepare($sql);
 
         foreach ($binds as $key => $value) {
-            static::$_stmt->bindValue($key, $value);
+            static::$stmt->bindValue($key, $value);
         }
 
         if ($execute === true) {
-            static::$_stmt->execute();
+            static::$stmt->execute();
         }
     }
 
@@ -67,17 +67,17 @@ class Database
      */
     public static function rowCount(): int
     {
-        return static::$_stmt->rowCount();
+        return static::$stmt->rowCount();
     }
 
     /**
      * Returns a single row.
      *
-     * @return stdClass The row as an object.
+     * @return mixed The row as an object.
      */
     public static function fetch()
     {
-        return static::$_stmt->fetch(PDO::FETCH_OBJ);
+        return static::$stmt->fetch(PDO::FETCH_OBJ);
     }
 
     /**
@@ -85,7 +85,7 @@ class Database
      */
     public static function quote(string $string): string
     {
-        return static::$_pdo->quote($string);
+        return static::$pdo->quote($string);
     }
 
     /**
@@ -95,6 +95,6 @@ class Database
      */
     public static function fetchAll()
     {
-        return static::$_stmt->fetchAll(PDO::FETCH_OBJ);
+        return static::$stmt->fetchAll(PDO::FETCH_OBJ);
     }
 }
