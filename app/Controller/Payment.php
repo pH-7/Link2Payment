@@ -63,40 +63,16 @@ class Payment extends Base
                 ]
             );
 
-            $this->sendEmailToSeller();
-            $this->sendEmailToBuyer(['name' => $dbData->fullname, 'email' => $dbData->email]);
+            $this->sendEmailToSeller(['name' => $dbData->fullname, 'email' => $dbData->email]);
+            //$this->sendEmailToBuyer();
 
             View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
-        }
-        catch (\Stripe\Error\Card $except) {
+        } catch (\Stripe\Error\Card $except) {
             // The card has been declined
             $this->errorPage($except->getMessage());
-        }
-        catch (\Stripe\Error\Base $except) {
+        } catch (\Stripe\Error\Base $except) {
             $this->errorPage($except->getMessage());
         }
-    }
-
-    /**
-     * @param array $buyerDetails
-     *
-     * @return int The number of successful recipients. Can be 0 which indicates failure.
-     */
-    private function sendEmailToBuyer(array $buyerDetails): int
-    {
-        $email = getenv('ADMIN_EMAIL');
-        $textMessage = sprintf("Hi %s!\r\n\r\n Congrats! You receive a new payment, made with %s", $buyerDetails['name'], site_name());
-
-        $transport = \Swift_MailTransport::newInstance();
-        $mailer = \Swift_Mailer::newInstance($transport);
-
-        // Create a message
-        $message = (new \Swift_Message('Wonderful Subject'))
-            ->setFrom([$email => site_name()])
-            ->setTo([$buyerDetails['email'] => $buyerDetails['name']])
-            ->setBody($textMessage);
-
-        return $mailer->send($message);
     }
 
     public function paypal(): void
@@ -112,9 +88,40 @@ class Payment extends Base
         }
     }
 
-    private function sendEmailToSeller()
+    /**
+     * @param array $sellerDetails
+     *
+     * @return int The number of successful recipients. Can be 0 which indicates failure.
+     */
+    private function sendEmailToSeller(array $sellerDetails): int
     {
+        $email = getenv('ADMIN_EMAIL');
+        $textMessage = sprintf("Hi %s!\r\n\r\n Congrats! You receive a new payment, made with %s", $sellerDetails['name'], site_name());
 
+        $transport = \Swift_MailTransport::newInstance();
+        $mailer = \Swift_Mailer::newInstance($transport);
+
+        // Create a message
+        $message = (new \Swift_Message('Wonderful Subject'))
+            ->setFrom([$email => site_name()])
+            ->setTo([$sellerDetails['email'] => $sellerDetails['name']])
+            ->setBody($textMessage);
+
+        return $mailer->send($message);
+    }
+
+    /**
+     * @param array $buyerDetails
+     *
+     * @return int The number of successful recipients. Can be 0 which indicates failure.
+     */
+    private function sendEmailToBuyer(array $buyerDetails): int
+    {
+        /**
+         * TODO: Not implemented yet
+         */
+
+        return 0;
     }
 
     /**
