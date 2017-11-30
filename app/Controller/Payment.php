@@ -130,9 +130,9 @@ class Payment extends Base
      *
      * @return int Returns amount in cents (without points) to be validated for Stripe.
      */
-    private function getIntegerAmount(string $sPrice)
+    private function getIntegerAmount(string $sPrice): int
     {
-        return str_replace('.', '', $sPrice);
+        return (int)str_replace('.', '', $sPrice);
     }
 
     private function getPaypalUrlQueries(stdClass $dbData): string
