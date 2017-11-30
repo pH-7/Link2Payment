@@ -28,7 +28,8 @@ class Payment extends Base
         $hash = Input::get('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
-        if (!empty($dbData) && $dbData->paymentGateway === self::STRIPE_GATEWAY) {
+
+        if ($this->isStripeSet($dbData)) {
             $tplVars = [
                 'payment_gateway' => $dbData->paymentGateway,
                 'business_name' => $dbData->businessName,
@@ -80,7 +81,7 @@ class Payment extends Base
         $hash = Input::get('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
-        if (!empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY) {
+        if ($this->isPayPalSet($dbData)) {
             $urlQueries = $this->getPaypalUrlQueries($dbData);
             redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
         } else {
@@ -145,5 +146,15 @@ class Payment extends Base
         ];
 
         return http_build_query($queries);
+    }
+
+    private function isStripeSet(stdClass $dbData): bool
+    {
+        return !empty($dbData) && $dbData->paymentGateway === self::STRIPE_GATEWAY;
+    }
+
+    private function isPayPalSet(stdClass $dbData): bool
+    {
+        return !empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY;
     }
 }
