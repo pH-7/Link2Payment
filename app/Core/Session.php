@@ -87,4 +87,9 @@ class Session
     {
         return isset($_COOKIE[$name]) ? $_COOKIE[$name] : false;
     }
+
+    public static function isActivated(): bool
+    {
+        return session_status() === PHP_SESSION_ACTIVE;
+    }
 }

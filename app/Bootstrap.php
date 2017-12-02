@@ -12,6 +12,7 @@ namespace PH7App;
 use Exception;
 use PH7App\Core\Database;
 use PH7App\Core\Main;
+use PH7App\Core\Session;
 
 define('APP_PATH', __DIR__ . DIRECTORY_SEPARATOR);
 
@@ -66,7 +67,7 @@ class Bootstrap
      */
     public function initializePHPSession(): void
     {
-        if (session_status() !== PHP_SESSION_ACTIVE) {
+        if (!Session::isActivated()) {
             @session_start();
         }
     }
