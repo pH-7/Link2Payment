@@ -1,5 +1,5 @@
-/vendor
-/node_modules
+vendor
+node_modules
 composer.phar
 .env
 
@@ -10,9 +10,11 @@ composer.phar
 # Gettext
 *.mo
 
+# PHPUnit coverage
+coverage
+
 # PhpStorm
 .idea
-
 
 ## OS ##
 
