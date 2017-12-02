@@ -38,7 +38,7 @@ class InputTest extends TestCase
         $this->assertFalse(Input::get('lalala'));
     }
 
-    public function testInvalidIp()
+    public function testInvalidIp(): void
     {
         $_SERVER['REMOTE_ADDR'] = '129292';
 
@@ -46,7 +46,7 @@ class InputTest extends TestCase
         $this->assertSame('127.0.0.1', Input::userIp());
     }
 
-    public function testValidRemoteAddrIp()
+    public function testValidRemoteAddrIp(): void
     {
         $_SERVER['REMOTE_ADDR'] = '108.170.3.142';
 
@@ -54,7 +54,7 @@ class InputTest extends TestCase
         $this->assertSame('108.170.3.142', Input::userIp());
     }
 
-    public function testValidXForwardedForIp()
+    public function testValidXForwardedForIp(): void
     {
         $_SERVER['HTTP_X_FORWARDED_FOR'] = '208.181.244.194';
 
@@ -62,7 +62,7 @@ class InputTest extends TestCase
         $this->assertSame('208.181.244.194', Input::userIp());
     }
 
-    public function testValidClientIp()
+    public function testValidClientIp(): void
     {
         $_SERVER['HTTP_CLIENT_IP'] = '208.181.244.199';
 
