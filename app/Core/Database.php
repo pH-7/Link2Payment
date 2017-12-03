@@ -22,13 +22,20 @@ class Database
     private static $stmt = null;
 
     /**
+     * It's a static class, to prevent instantiation of the class
+     */
+    final private function __construct() {}
+    final private function __clone() {}
+
+
+    /**
      * Establishes a connection.
      *
      * @param array $dbDetails The database details
      *
      * @return void
      */
-    public static function connect(array $dbDetails = array())
+    public static function connect(array $dbDetails = array()): void
     {
         try {
             static::$pdo = new PDO('mysql:host=' . $dbDetails['dbHost'] . ';dbname=' . $dbDetails['dbName'], $dbDetails['dbUser'], $dbDetails['dbPass']);
@@ -73,7 +80,7 @@ class Database
     /**
      * Returns a single row.
      *
-     * @return mixed The row as an object.
+     * @return \stdClass|bool The row as an object or FALSE on failure.
      */
     public static function fetch()
     {
@@ -91,10 +98,10 @@ class Database
     /**
      * Returns all rows
      *
-     * @return stdClass The rows as an object.
+     * @return array|null The rows as an object.
      */
-    public static function fetchAll()
+    public static function fetchAll(): ?array
     {
-        return static::$stmt->fetchAll(PDO::FETCH_OBJ);
+        return static::$stmt->fetchAll(PDO::FETCH_OBJ) ?? null;
     }
 }
