@@ -26,7 +26,7 @@ class User
 
     public static function getId(): int
     {
-        return Session::get('userId');
+        return (int)Session::get('userId');
     }
 
     public static function getEmail(): string
