@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-namespace PH7App\Test\Core\View;
+namespace PH7App\Test\Core;
 
 use PH7App\Core\View;
 use PHPUnit\Framework\TestCase;

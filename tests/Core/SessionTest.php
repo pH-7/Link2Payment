@@ -7,7 +7,7 @@
 
 declare(strict_types = 1);
 
-namespace PH7App\Test\Core\Session;
+namespace PH7App\Test\Core;
 
 use PH7App\Core\Session;
 use PHPUnit\Framework\TestCase;
