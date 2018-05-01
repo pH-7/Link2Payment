@@ -39,7 +39,7 @@ class User
      */
     public static function generateHash(): string
     {
-        $prefix = (string) mt_rand();
+        $prefix = (string)mt_rand();
 
         return substr(md5(uniqid($prefix, true)), 0, static::HASH_LENGTH);
     }
