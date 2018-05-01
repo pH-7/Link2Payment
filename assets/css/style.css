@@ -4,29 +4,6 @@
  * License:       GNU General Public License; See PH7.LICENSE.txt and PH7.COPYRIGHT.txt in the root directory.
  */
 
-.flag.icon, .gender.icon {
-    max-width: 100%;
-    height: 150px;
-    border-radius: 5px;
-}
-
-.flag.icon, .destination, .age-range, .lifestyle-topic, .education, .saving, .job-type, .availability {
-    display: inline-block;
-}
-
-.destination, .age-range, .lifestyle-topic, .education, .saving, .job-type, .availability {
-    font-weight: bold;
-    margin: 10px;
-}
-
-.destination, .lifestyle-topic, .education, .job-type {
-    font-size: 1rem;
-}
-
-.age-range, .saving, .availability {
-    font-size: 2.5rem;
-}
-
 .container-margin {
     margin-top: 50px;
     margin-bottom: 50px;
