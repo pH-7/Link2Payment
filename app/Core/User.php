@@ -11,7 +11,7 @@ namespace PH7App\Core;
 
 class User
 {
-    const HASH_LENGTH = 4; // When get more user, will need to increase it!
+    private const HASH_LENGTH = 4; // When get more user, will need to increase it!
 
     public static function setAuth(int $userId, string $email): void
     {
