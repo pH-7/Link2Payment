@@ -24,6 +24,7 @@ class Route
     private const CONTROLLER_NAMESPACE = 'PH7App\Controller\\';
     private const SEPARATOR = '@';
 
+    /** @var string|null */
     private static $httpMethod;
 
     public static function get(string $uri, string $classMethod = ''): void
