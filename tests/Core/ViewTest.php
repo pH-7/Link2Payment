@@ -15,13 +15,11 @@ use RuntimeException;
 
 class ViewTest extends TestCase
 {
-    /**
-     * @expectedException RuntimeException
-     *
-     * @expectedExceptionMessage Could not find view: "templates/randomfile.php"
-     */
     public function testNotFoundView(): void
     {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Could not find view: "templates/randomfile.php"');
+
         View::create('randomfile', '', [], View::PARTIALS_ENABLED);
     }
 }
