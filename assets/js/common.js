@@ -18,8 +18,7 @@ $(document).ready(function() {
     });
 });
 
-function showStripeFields()
-{
+function showStripeFields() {
     $('#stripe-settings').show();
     $('#paypal-settings').hide();
     $('input#publishable_key').attr('required');
@@ -27,8 +26,7 @@ function showStripeFields()
     $('input#paypal_email').removeAttr('required');
 }
 
-function showPaypalField()
-{
+function showPaypalField() {
     $('#stripe-settings').hide();
     $('#paypal-settings').show();
     $('input#publishable_key').removeAttr('required');
