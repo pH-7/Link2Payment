@@ -78,7 +78,7 @@ class Route
             if (!self::isController($value)) {
                 redirect($value);
             } else {
-                if (!empty(self::$httpMethod) && $_SERVER['REQUEST_METHOD'] !== self::$httpMethod) {
+                if (self::$httpMethod !== null && $_SERVER['REQUEST_METHOD'] !== self::$httpMethod) {
                     //throw new InvalidArgumentException(sprintf('HTTP Method Must be %s', self::$httpMethod));
                     (new BaseController)->notFoundPage();
                 }
