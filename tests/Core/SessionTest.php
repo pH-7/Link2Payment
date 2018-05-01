@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 class SessionTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -52,7 +52,7 @@ class SessionTest extends TestCase
         $this->assertFalse(Session::showCookie('nothing'));
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
 

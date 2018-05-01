@@ -70,7 +70,7 @@ class InputTest extends TestCase
         $this->assertSame('208.181.244.199', Input::userIp());
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($_POST, $_GET);
     }
