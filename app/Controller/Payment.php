@@ -28,7 +28,6 @@ class Payment extends Base
         $hash = Input::get('hash');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
-
         if ($this->isStripeSet($dbData)) {
             $tplVars = [
                 'payment_gateway' => $dbData->paymentGateway,
