@@ -199,7 +199,7 @@ class Main extends Base
         View::create('forms/password', 'Change Your Password', $data);
     }
 
-    public function signout(): void
+    public function signOut(): void
     {
         Session::destroy();
 
