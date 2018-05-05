@@ -9,7 +9,7 @@
 <?= $form->token() ?>
 <?= $form->hidden('signup')->value(1) ?>
 
-<?= $form->hidden('firstname')->addClass('nofield') // Spambot prevention using a hidden field ?>
+<?= $form->text('firstname')->addClass('nofield') // Spambot prevention using a hidden field ?>
 
 <p>
     <?= $form->label('Valid Email:')->forId('email') ?>
