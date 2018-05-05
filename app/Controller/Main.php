@@ -34,7 +34,7 @@ class Main extends Base
         View::create('home', 'Welcome!', $tplVars);
     }
 
-    public function signin(): void
+    public function signIn(): void
     {
         $data = [];
 
@@ -58,7 +58,7 @@ class Main extends Base
         View::create('forms/signin', 'Sign In', $data);
     }
 
-    public function signup(): void
+    public function signUp(): void
     {
         $data = [];
 
