@@ -225,6 +225,6 @@ class Main extends Base
 
     private function getPaymentMethodName(string $gatewayName): string
     {
-        return $gatewayName === Payment::STRIPE_GATEWAY ? 'getStripePaymentLink' : 'getPaypalPaymentLink';
+        return $gatewayName === Payment::STRIPE_GATEWAY ? User::STRIPE_LINK_METHOD_NAME : User::PAYPAL_LINK_METHOD_NAME;
     }
 }

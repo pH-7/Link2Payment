@@ -11,6 +11,9 @@ namespace PH7App\Core;
 
 class User
 {
+    public const STRIPE_LINK_METHOD_NAME = 'getStripePaymentLink';
+    public const PAYPAL_LINK_METHOD_NAME = 'getPaypalPaymentLink';
+
     private const HASH_LENGTH = 4; // When get more user, will need to increase it!
 
     public static function setAuth(int $userId, string $email): void
