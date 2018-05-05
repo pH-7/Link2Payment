@@ -22,3 +22,5 @@
 <p>
     <?= $form->submit('Sign In')->addClass('bold waves-effect btn-large') ?>
 </p>
+
+<?= $form->close() ?>

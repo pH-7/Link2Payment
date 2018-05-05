@@ -106,3 +106,5 @@
 <p>
     <?= $form->submit('Update')->addClass('bold waves-effect btn-large') ?>
 </p>
+
+<?= $form->close() ?>

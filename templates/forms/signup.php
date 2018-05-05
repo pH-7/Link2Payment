@@ -94,3 +94,5 @@
 <p>
     <?= $form->submit('Sign Up')->addClass('bold waves-effect btn-large') ?>
 </p>
+
+<?= $form->close() ?>

@@ -30,3 +30,5 @@
 <p>
     <?= $form->submit('Change Password')->addClass('bold waves-effect btn-large') ?>
 </p>
+
+<?= $form->close() ?>

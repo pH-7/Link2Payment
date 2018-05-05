@@ -20,5 +20,6 @@
         <?php endif ?>
     >
     </script>
-    </form>
+
+    <?= $form->close() ?>
 </div>
