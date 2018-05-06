@@ -16,14 +16,14 @@ if (!User::isLoggedIn()) {
     Route::getAndPost('/', 'Main@home'); // Only for logged in users
 }
 
-Route::getAndPost('/signup', 'Main@signup');
-Route::getAndPost('/signin', 'Main@signin');
+Route::getAndPost('/signup', 'Main@signUp');
+Route::getAndPost('/signin', 'Main@signIn');
 Route::get('/stripe', 'Payment@stripe');
-Route::post('/stripe-checkout', 'Payment@stripecheckout');
+Route::post('/stripe-checkout', 'Payment@stripeCheckout');
 Route::get('/paypal', 'Payment@paypal');
 
 if (User::isLoggedIn()) { // Only for logged in users
     Route::getAndPost('/edit', 'Main@edit');
     Route::getAndPost('/password', 'Main@password');
-    Route::getAndPost('/signout', 'Main@signout');
+    Route::getAndPost('/signout', 'Main@signOut');
 }
