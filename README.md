@@ -15,6 +15,8 @@ The project is based on a homemade lightweight PHP framework (ideal for very sma
 
 * **Server** PHP 7.1 or newer
 * **Database** MySQL/MariaDB 5.0.3 or newer
+* **Package Manager** Composer
+* **Package Manager** NPM
 
 
 ## The Author
