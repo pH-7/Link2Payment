@@ -2,7 +2,7 @@
 
 Get your Stripe payment link to get paid everywhere, in emails, on a non-SSL website, donation, from an ebook, on a book (by just displaying the payment link, ...).
 
-Psst! It now works also with PayPal! Get easier your PayPal Payment Link than generating a paypal button through the old and painful Paypal website.
+Psst! It now works also with PayPal! Get easier your PayPal Payment Link than generating a PayPal button through the old and painful PayPal website.
 
 **Link2Payment** is based on the same code (little bit improved though) than another startup idea called "[MyNewDream.eu](https://github.com/pH-7/MyDreamLife.eu)"
 
