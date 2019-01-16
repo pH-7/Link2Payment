@@ -4,7 +4,6 @@
   "description": "Get your Stripe/PayPal payment link to get paid everywhere, in emails, on a non-SSL website, donation, from an ebook, on a book (by just displaying the payment link, ...)",
   "main": "index.js",
   "dependencies": {
-    "flag-icon-css": "^2.8.0",
     "material-icons": "^0.1.0",
     "materialize-css": "^0.100.2"
   },

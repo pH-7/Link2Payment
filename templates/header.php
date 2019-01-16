@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="<?= site_url('node_modules/materialize-css/dist/css/materialize.min.css') ?>">
     <link rel="stylesheet" href="<?= site_url('node_modules/material-icons/css/material-icons.min.css') ?>">
-    <link rel="stylesheet" href="<?= site_url('node_modules/flag-icon-css/css/flag-icon.min.css') ?>">
     <link rel="stylesheet" href="<?= asset_url('css/style.css') ?>">
     <?php include 'analytics.inc.php' ?>
 
