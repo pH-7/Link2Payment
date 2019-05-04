@@ -21,7 +21,7 @@ The project is based on a homemade lightweight PHP framework (ideal for very sma
 
 ## The Author
 
-I'm [Pierre-Henry Soria](http://ph7.me). A passionate Belgian engineer :chocolate_bar:
+I'm [Pierre-Henry Soria](http://ph7.me). A super passionate, Belgian software engineer :chocolate_bar:
 
 You can contact me at *hi {[AT]} ph7 [{D0T}] me*
 
@@ -33,9 +33,9 @@ You can contact me at *hi {[AT]} ph7 [{D0T}] me*
 
 ## Setting Up
 
-* Run composer to install the project dependencies
-* Create a database and import *database.sql* file
-* Rename `.env.example` to `.env` and edit SITE_URL and DB details
+* Run composer to install the project dependencies.
+* Create a database and import `database.sql` file.
+* Rename `.env.example` to `.env` and edit SITE_URL and DB details.
 
 
 ## License
