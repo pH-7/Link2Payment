@@ -25,6 +25,7 @@ I'm [Pierre-Henry Soria](http://ph7.me). A super passionate, Belgian software en
 
 You can contact me at *hi {[AT]} ph7 [{D0T}] me*
 
+[![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay) [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7)
 
 ## Project URL
 
