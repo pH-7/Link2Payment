@@ -9,7 +9,6 @@ namespace PH7App;
 
 require 'app/Bootstrap.php';
 
-ob_start();
 $oApp = new Bootstrap;
 $oApp->initializeDebugging();
 $oApp->initializePHPSession();
