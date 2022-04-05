@@ -5,5 +5,5 @@
 </p>
 
 <p class="italic">
-  For any further information, please contact the buyer at <a href="mailto:<?= $buyer_email ?>"><?= $buyer_email ?></a>
+  For any further information, please contact the seller at <a href="mailto:<?= $seller_email ?>"><?= $seller_email ?></a>
 </p>

@@ -27,9 +27,9 @@ class Main extends Base
     public function home(): void
     {
         $userId = User::getId();
-        $dbData = UserModel::getDetails($userId);
-        $methodName = $this->getPaymentMethodName($dbData->paymentGateway);
-        $tplVars = ['fullname' => $dbData->fullname, 'payment_link' => User::$methodName($dbData->hash)];
+        $userDetails = UserModel::getDetails($userId);
+        $methodName = $this->getPaymentGatewayMethod($userDetails->paymentGateway);
+        $tplVars = ['fullname' => $userDetails->fullname, 'payment_link' => User::$methodName($userDetails->hash)];
 
         View::create('home', 'Welcome!', $tplVars);
     }
@@ -154,19 +154,19 @@ class Main extends Base
         }
 
         // Get user data from DB to fulfill the form field values
-        $dbData = UserModel::getDetails($userId);
+        $sellerDetails = UserModel::getDetails($userId);
 
         $tplVars += [
-            'fullname' => $dbData->fullname,
-            'publishable_key' => $dbData->publishableKey,
-            'secret_key' => $dbData->secretKey,
-            'paypal_email' => $dbData->paypalEmail,
-            'business_name' => $dbData->businessName,
-            'item_name' => $dbData->itemName,
-            'currency' => $dbData->currency,
-            'amount' => $dbData->amount,
-            'is_bitcoin' => (bool)$dbData->isBitcoin,
-            'payment_gateway' => $dbData->paymentGateway
+            'fullname' => $sellerDetails->fullname,
+            'publishable_key' => $sellerDetails->publishableKey,
+            'secret_key' => $sellerDetails->secretKey,
+            'paypal_email' => $sellerDetails->paypalEmail,
+            'business_name' => $sellerDetails->businessName,
+            'item_name' => $sellerDetails->itemName,
+            'currency' => $sellerDetails->currency,
+            'amount' => $sellerDetails->amount,
+            'is_bitcoin' => (bool)$sellerDetails->isBitcoin,
+            'payment_gateway' => $sellerDetails->paymentGateway
         ];
 
         View::create('forms/edit', 'Edit Your Details', $tplVars);
@@ -223,7 +223,7 @@ class Main extends Base
         }
     }
 
-    private function getPaymentMethodName(string $gatewayName): string
+    private function getPaymentGatewayMethod(string $gatewayName): string
     {
         return $gatewayName === Payment::STRIPE_GATEWAY ? User::STRIPE_LINK_METHOD_NAME : User::PAYPAL_LINK_METHOD_NAME;
     }

@@ -26,21 +26,21 @@ class Payment extends Base
     public function stripe(): void
     {
         $hash = Input::get('hash');
-        $dbData = PaymentModel::getPaymentInfo($hash);
+        $paymentDetails = PaymentModel::getPaymentInfo($hash);
 
-        if ($this->isStripeSet($dbData)) {
+        if ($this->isStripeSet($paymentDetails)) {
             $tplVars = [
-                'payment_gateway' => $dbData->paymentGateway,
-                'business_name' => $dbData->businessName,
-                'publishable_key' => $dbData->publishableKey,
-                'item_name' => $dbData->itemName,
-                'amount' => $dbData->amount,
-                'currency' => $dbData->currency,
-                'is_bitcoin' => $dbData->isBitcoin,
-                'hash' => $dbData->hash
+                'payment_gateway' => $paymentDetails->paymentGateway,
+                'business_name' => $paymentDetails->businessName,
+                'publishable_key' => $paymentDetails->publishableKey,
+                'item_name' => $paymentDetails->itemName,
+                'amount' => $paymentDetails->amount,
+                'currency' => $paymentDetails->currency,
+                'is_bitcoin' => $paymentDetails->isBitcoin,
+                'hash' => $paymentDetails->hash
             ];
 
-            View::create('forms/stripe', $dbData->businessName, $tplVars);
+            View::create('forms/stripe', $paymentDetails->businessName, $tplVars);
         } else {
             $this->notFoundPage();
         }
@@ -49,6 +49,8 @@ class Payment extends Base
     public function stripeCheckout(): void
     {
         $hash = Input::post('hash');
+        $stripeToken = Input::post('stripeToken');
+        $stripeEmail = Input::post('stripeEmail');
         $dbData = PaymentModel::getPaymentInfo($hash);
 
         Stripe::setApiKey($dbData->secretKey);
@@ -58,15 +60,15 @@ class Payment extends Base
                 [
                     'amount' => $this->getIntegerAmount($dbData->amount),
                     'currency' => $dbData->currency,
-                    'source' => Input::post('stripeToken'),
-                    'description' => sprintf('Membership charged for %s', Input::post('stripeEmail'))
+                    'source' => $stripeToken,
+                    'description' => sprintf('Membership charged for %s',$stripeEmail)
                 ]
             );
 
             $this->sendEmailToSeller(['name' => $dbData->fullname, 'email' => $dbData->email]);
-            //$this->sendEmailToBuyer(); // TODO Not implemented yet
+            $this->sendEmailToBuyer(['email' => $stripeEmail]);
 
-            View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
+            View::create('payment-done', 'Payment Done', ['seller_email' => $dbData->email]);
         } catch (\Stripe\Error\Card $except) {
             // The card has been declined
             $this->errorPage($except->getMessage());
@@ -78,10 +80,10 @@ class Payment extends Base
     public function paypal(): void
     {
         $hash = Input::get('hash');
-        $dbData = PaymentModel::getPaymentInfo($hash);
+        $paymentDetails = PaymentModel::getPaymentInfo($hash);
 
-        if ($this->isPayPalSet($dbData)) {
-            $urlQueries = $this->getPaypalUrlQueries($dbData);
+        if ($this->isPayPalSet($paymentDetails)) {
+            $urlQueries = $this->getPaypalUrlQueries($paymentDetails);
             redirect(static::PAYPAL_PAYMENT_URL . '?' . $urlQueries);
         } else {
             $this->notFoundPage();
@@ -134,26 +136,26 @@ class Payment extends Base
         return (int)str_replace('.', '', $sPrice);
     }
 
-    private function getPaypalUrlQueries(stdClass $dbData): string
+    private function getPaypalUrlQueries(stdClass $paymentDetails): string
     {
         $queries = [
             'cmd' => '_xclick',
-            'business' => $dbData->paypalEmail,
-            'item_name' => $dbData->itemName,
-            'amount' => $dbData->amount,
-            'currency_code' => $dbData->currency
+            'business' => $paymentDetails->paypalEmail,
+            'item_name' => $paymentDetails->itemName,
+            'amount' => $paymentDetails->amount,
+            'currency_code' => $paymentDetails->currency
         ];
 
         return http_build_query($queries);
     }
 
-    private function isStripeSet(stdClass $dbData): bool
+    private function isStripeSet(stdClass $paymentDetails): bool
     {
-        return !empty($dbData) && $dbData->paymentGateway === self::STRIPE_GATEWAY;
+        return !empty($paymentDetails) && $paymentDetails->paymentGateway === self::STRIPE_GATEWAY;
     }
 
-    private function isPayPalSet(stdClass $dbData): bool
+    private function isPayPalSet(stdClass $paymentDetails): bool
     {
-        return !empty($dbData) && $dbData->paymentGateway === self::PAYPAL_GATEWAY;
+        return !empty($paymentDetails) && $paymentDetails->paymentGateway === self::PAYPAL_GATEWAY;
     }
 }
