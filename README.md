@@ -18,25 +18,24 @@ The project is based on a homemade lightweight PHP framework (ideal for very sma
 * **Package Manager** Composer
 * **Package Manager** NPM
 
+## Setting Up
+
+* From a command line opened in the project, run `composer install` and `npm install` to install the project dependencies.
+* Create a MySQL database and import `database.sql` file.
+* Rename `.env.example` to `.env` and edit SITE_URL and DB details.
+
 
 ## The Author
 
-I'm [Pierre-Henry Soria](http://ph7.me). A super passionate, Belgian software engineer :chocolate_bar:
+I'm [Pierre-Henry Soria](https://ph7.me). A **super passionate** Belgian **software engineer** 🤗 And a true cheese 🧀 & chocolate 🍫 lover! 😋 You can reach me at *hi {[AT]} ph7 [{D0T}] me*
 
-You can contact me at *hi {[AT]} ph7 [{D0T}] me*
+️☕️ Are you enjoying my work? **[Offer me a coffee](https://ko-fi.com/phenry)** - and boost the software development at the same time! 💪
 
-[![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay) [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7)
+[![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay "Follow Me on Twitter") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub")
 
 ## Project URL
 
 [https://link2payment.co](https://link2payment.co) :smiley:
-
-
-## Setting Up
-
-* Run composer to install the project dependencies.
-* Create a database and import `database.sql` file.
-* Rename `.env.example` to `.env` and edit SITE_URL and DB details.
 
 
 ## License
