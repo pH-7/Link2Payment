@@ -64,7 +64,7 @@ class Payment extends Base
             );
 
             $this->sendEmailToSeller(['name' => $dbData->fullname, 'email' => $dbData->email]);
-            //$this->sendEmailToBuyer();
+            //$this->sendEmailToBuyer(); // TODO Not implemented yet
 
             View::create('payment-done', 'Payment Done', ['buyer_email' => $dbData->email]);
         } catch (\Stripe\Error\Card $except) {
