@@ -7,9 +7,6 @@ composer.phar
 *.log
 *.tmp
 
-# Gettext
-*.mo
-
 # PHPUnit coverage
 coverage
 
