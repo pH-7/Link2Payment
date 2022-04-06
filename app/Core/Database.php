@@ -24,8 +24,8 @@ class Database
     /**
      * It's a static class, to prevent instantiation of the class
      */
-    final private function __construct() {}
-    final private function __clone() {}
+    private function __construct() {}
+    private function __clone() {}
 
 
     /**
