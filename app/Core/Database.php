@@ -12,6 +12,7 @@ namespace PH7App\Core;
 use PDO;
 use PDOException;
 use PDOStatement;
+use stdClass;
 
 class Database
 {
@@ -80,16 +81,13 @@ class Database
     /**
      * Returns a single row.
      *
-     * @return \stdClass|bool The row as an object or FALSE on failure.
+     * @return stdClass|null The row as an object.
      */
-    public static function fetch()
+    public static function fetch(): ?stdClass
     {
-        return static::$stmt->fetch(PDO::FETCH_OBJ);
+        return static::$stmt->fetch(PDO::FETCH_OBJ) ?? null;
     }
 
-    /**
-     * @return string
-     */
     public static function quote(string $string): string
     {
         return static::$pdo->quote($string);
