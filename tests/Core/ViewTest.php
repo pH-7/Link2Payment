@@ -13,7 +13,7 @@ use PH7App\Core\View;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-class ViewTest extends TestCase
+final class ViewTest extends TestCase
 {
     public function testNotFoundView(): void
     {

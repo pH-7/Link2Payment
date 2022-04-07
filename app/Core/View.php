@@ -5,13 +5,13 @@
  * @license        GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace PH7App\Core;
 
 use RuntimeException;
 
-class View
+final class View
 {
     public const ERROR_MSG_KEY = 'error_msg';
     public const SUCCESS_MSG_KEY = 'success_msg';

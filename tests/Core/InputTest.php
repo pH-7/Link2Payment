@@ -12,7 +12,7 @@ namespace PH7App\Test\Core;
 use PH7App\Core\Input;
 use PHPUnit\Framework\TestCase;
 
-class InputTest extends TestCase
+final class InputTest extends TestCase
 {
     public function testPostWithHtmlEntities(): void
     {

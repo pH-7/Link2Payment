@@ -12,7 +12,7 @@ namespace PH7App\Test\Core;
 use PH7App\Core\Session;
 use PHPUnit\Framework\TestCase;
 
-class SessionTest extends TestCase
+final class SessionTest extends TestCase
 {
     protected function setUp(): void
     {

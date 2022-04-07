@@ -20,7 +20,7 @@ require 'vendor/autoload.php';
 require 'config/environment.php';
 require 'helpers.php';
 
-class Bootstrap
+final class Bootstrap
 {
     private const DEFAULT_TIMEZONE = 'America/Chicago';
 
