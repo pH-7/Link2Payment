@@ -12,7 +12,6 @@ namespace PH7App\Core;
 use PDO;
 use PDOException;
 use PDOStatement;
-use stdClass;
 
 class Database
 {
