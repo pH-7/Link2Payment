@@ -1,6 +1,8 @@
 <?php namespace PH7App; ?>
 
-<h3 class="center">Get Your Stripe Payment Link for Free</h3>
+<h3 class="center">
+  Get Your Stripe Payment Link for Free
+</h3>
 
 <?php include dirname(__DIR__, 1) . '/includes/message.inc.php' ?>
 
