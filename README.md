@@ -13,7 +13,7 @@ The project is based on a homemade lightweight PHP framework (ideal for very sma
 
 ## Requirements
 
-* **Server** PHP 7.1 or newer
+* **Server** PHP 7.3 or newer
 * **Database** MySQL/MariaDB 5.0.3 or newer
 * **Package Manager** Composer
 * **Package Manager** NPM
@@ -32,6 +32,7 @@ I'm [Pierre-Henry Soria](https://ph7.me). A **super passionate** Belgian **softw
 ️☕️ Are you enjoying my work? **[Offer me a coffee](https://ko-fi.com/phenry)** - and boost the software development at the same time! 💪
 
 [![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay "Follow Me on Twitter") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub")
+
 
 ## Project URL
 
