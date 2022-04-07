@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="<?= site_url('node_modules/materialize-css/dist/css/materialize.min.css') ?>">
     <link rel="stylesheet" href="<?= site_url('node_modules/material-icons/css/material-icons.min.css') ?>">
     <link rel="stylesheet" href="<?= asset_url('css/style.css') ?>">
-    <?php include 'analytics.inc.php' ?>
+    <?php if (!empty($_ENV['GOOGLE_ANALYTICS_ID'])): ?>
+      <?php include 'analytics.inc.php' ?>
+    <?php endif ?>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
