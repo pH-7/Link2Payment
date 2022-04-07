@@ -14,7 +14,7 @@ namespace PH7App {
 namespace {
     function site_url(string $var = ''): string
     {
-        $siteUrl = getenv('SITE_URL');
+        $siteUrl = $_ENV['SITE_URL'];
 
         if (!empty($var)) {
             return $siteUrl . $var;
@@ -25,12 +25,12 @@ namespace {
 
     function site_name(): string
     {
-        return getenv('SITE_NAME');
+        return $_ENV['SITE_NAME'];
     }
 
     function asset_url(string $var): string
     {
-        return getenv('SITE_URL') . 'assets/' . $var;
+        return $_ENV['SITE_URL'] . 'assets/' . $var;
     }
 
     function redirect(string $url, bool $permanent = true): void
@@ -40,7 +40,7 @@ namespace {
         }
 
         if (strpos($url, 'http') === false) {
-            $url = getenv('SITE_URL') . $url;
+            $url = $_ENV['SITE_URL'] . $url;
         }
 
         header('Location: ' . $url);

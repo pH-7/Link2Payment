@@ -97,7 +97,7 @@ class Payment extends Base
      */
     private function sendEmailToSeller(array $sellerDetails): int
     {
-        $email = getenv('ADMIN_EMAIL');
+        $email = $_ENV['ADMIN_EMAIL'];
         $textMessage = sprintf("Hi %s!\r\n\r\n Congrats! You receive a new payment, made with %s", $sellerDetails['name'], site_name());
 
         $transport = \Swift_MailTransport::newInstance();

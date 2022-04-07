@@ -33,10 +33,10 @@ class Bootstrap
     {
         try {
             $dbDetails = [
-                'dbHost' => getenv('DB_HOST'),
-                'dbUser' => getenv('DB_USER'),
-                'dbPass' => getenv('DB_PWD'),
-                'dbName' => getenv('DB_NAME')
+                'dbHost' => $_ENV['DB_HOST'],
+                'dbUser' => $_ENV['DB_USER'],
+                'dbPass' => $_ENV['DB_PWD'],
+                'dbName' => $_ENV['DB_NAME']
             ];
             Database::connect($dbDetails);
 
@@ -49,7 +49,7 @@ class Bootstrap
     public function initializeDebugging(): void
     {
         // First, convert "true/false" string from phpdotenv to boolean
-        $debugMode = filter_var(getenv('DEBUG_MODE'), FILTER_VALIDATE_BOOLEAN);
+        $debugMode = filter_var($_ENV['DEBUG_MODE'], FILTER_VALIDATE_BOOLEAN);
 
         if ($debugMode) {
             error_reporting(E_ALL);

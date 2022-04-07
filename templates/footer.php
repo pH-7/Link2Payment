@@ -30,7 +30,7 @@
                   Made with ❤️ in Vancouver 🇨🇦 by <a class="red-text text-lighten-3" href="http://ph7.me">Pierre-Henry</a>
               </div>
               <div class="col l2 s12">
-                  <a class="red-text text-lighten-3" rel="nofollow" href="mailto:<?= getenv('ADMIN_EMAIL') ?>?subject=Regarding Link2Payment">Contact</a>
+                  <a class="red-text text-lighten-3" rel="nofollow" href="mailto:<?= $_ENV['ADMIN_EMAIL'] ?>?subject=Regarding Link2Payment">Contact</a>
               </div>
           </div>
       </div>

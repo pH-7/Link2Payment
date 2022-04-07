@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= getenv('SITE_NAME') ?> &mdash; <?= $title; ?></title>
+    <title><?= $_ENV['SITE_NAME'] ?> &mdash; <?= $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700">
@@ -25,7 +25,7 @@
 <?php if (!Core\Route::isStripePage()): ?>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= getenv('SITE_NAME') ?></a>
+      <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= $_ENV['SITE_NAME'] ?></a>
       <ul id="nav-mobile" class="right">
         <?php if (!Core\User::isLoggedIn()): ?>
           <li><a href="<?= site_url('signup') ?>" class="red-text text-lighten-3 bold underline">Sign Up</a></li>
