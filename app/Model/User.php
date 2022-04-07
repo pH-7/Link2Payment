@@ -57,7 +57,7 @@ class User
     {
         Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 
-        return (string)Database::fetch()->password;
+        return Database::fetch()->password ?? '';
     }
 
     public static function updatePassword(string $newPassword, int $userId): void
