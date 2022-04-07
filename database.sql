@@ -8,7 +8,7 @@ CREATE TABLE user (
   hash varchar(40) NOT NULL,
   email varchar(120) NOT NULL,
   password varchar(120) NOT NULL,
-  fullname varchar(250) NOT NULL,
+  fullname varchar(250) DEFAULT NULL,
   isTwoFactorAuth enum('1','0') DEFAULT '0',
   twoFactorAuthSecret varchar(40) DEFAULT NULL,
   ip varchar(45) NOT NULL DEFAULT '127.0.0.1',
