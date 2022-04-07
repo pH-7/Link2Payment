@@ -81,11 +81,11 @@ class Database
     /**
      * Returns a single row.
      *
-     * @return stdClass|null The row as an object.
+     * @return mixed The row as an object.
      */
-    public static function fetch(): ?stdClass
+    public static function fetch()
     {
-        return static::$stmt->fetch(PDO::FETCH_OBJ) ?? null;
+        return static::$stmt->fetch(PDO::FETCH_OBJ);
     }
 
     public static function quote(string $string): string
