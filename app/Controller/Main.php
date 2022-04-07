@@ -21,7 +21,10 @@ class Main extends Base
 {
     public function index(): void
     {
-        View::create('splash-homepage', 'Get your Stripe Payment Link to get paid everywhere');
+        View::create(
+            'splash-homepage',
+            'Get your Stripe Payment Link to get paid everywhere',
+        );
     }
 
     public function home(): void

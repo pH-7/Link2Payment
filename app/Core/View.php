@@ -32,7 +32,7 @@ class View
         extract($data);
 
         if (!$paritals) {
-            include 'templates/header.php';
+            include 'templates/includes/header.php';
         }
 
         $viewFullPath = 'templates/' . $view . '.php';
@@ -44,7 +44,7 @@ class View
         }
 
         if (!$paritals) {
-            include 'templates/footer.php';
+            include 'templates/includes/footer.php';
         }
     }
 }

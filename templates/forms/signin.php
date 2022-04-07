@@ -1,6 +1,6 @@
 <?php namespace PH7App; ?>
 
-<?php include 'message.inc.php' ?>
+<?php include '../includes/message.inc.php' ?>
 
 <?php $form = new \AdamWathan\Form\FormBuilder; ?>
 <?= $form->open()->action(site_url('signin')) ?>
