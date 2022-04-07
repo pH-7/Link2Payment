@@ -1,11 +1,11 @@
 <?php
 /**
  * @author         Pierre-Henry Soria <hi@ph7.me>
- * @copyright      (c) 2017-2018, Pierre-Henry Soria. All Rights Reserved.
+ * @copyright      (c) 2017-2022, Pierre-Henry Soria. All Rights Reserved.
  * @license        GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace PH7App\Controller;
 
@@ -23,7 +23,7 @@ class Main extends Base
     {
         View::create(
             'splash-homepage',
-            'Get your Stripe Payment Link to get paid everywhere',
+            'Get your Stripe Payment Link to get paid everywhere'
         );
     }
 

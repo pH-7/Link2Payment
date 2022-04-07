@@ -1,5 +1,5 @@
 --
--- Copyright:     (c) 2017-2018, Pierre-Henry Soria. All Rights Reserved.
+-- Copyright:     (c) 2017-2022, Pierre-Henry Soria. All Rights Reserved.
 -- License:       GNU General Public License <https://www.gnu.org/licenses/gpl-3.0.en.html>
 --
 

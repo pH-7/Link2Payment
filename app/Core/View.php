@@ -1,7 +1,7 @@
 <?php
 /**
  * @author         Pierre-Henry Soria <hi@ph7.me>
- * @copyright      (c) 2017-2018, Pierre-Henry Soria. All Rights Reserved.
+ * @copyright      (c) 2017-2022, Pierre-Henry Soria. All Rights Reserved.
  * @license        GNU General Public License; <https://www.gnu.org/licenses/gpl-3.0.en.html>
  */
 
@@ -27,8 +27,12 @@ final class View
      *
      * @throws RuntimeException
      */
-    public static function create(string $view, string $title = '', array $data = array(), bool $paritals = self::PARTIALS_DISABLED): void
-    {
+    public static function create(
+        string $view,
+        string $title = '',
+        array $data = [],
+        bool $paritals = self::PARTIALS_DISABLED
+    ): void {
         extract($data);
 
         if (!$paritals) {
