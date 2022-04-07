@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= $_ENV['SITE_NAME'] ?> &mdash; <?= $title; ?></title>
+    <title><?= $title; ?> &mdash; <?= $_ENV['SITE_NAME'] ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,300,700">
