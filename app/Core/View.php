@@ -33,6 +33,7 @@ final class View
         array $data = [],
         bool $paritals = self::PARTIALS_DISABLED
     ): void {
+        // Extract all variables passed here (including `$title`)
         extract($data);
 
         if (!$paritals) {
