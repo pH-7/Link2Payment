@@ -16,8 +16,6 @@ class User
     private const TABLE_NAME = 'user';
 
     /**
-     * @param mixed $hash
-     *
      * @return bool|\stdClass
      */
     public static function getDetails(int $userId)
@@ -37,23 +35,21 @@ class User
         Database::query('UPDATE ' . self::TABLE_NAME . ' SET fullname = :fullname WHERE userId = :user_id LIMIT 1', $binds);
     }
 
-    public static function getId(string $email): ?int
+    public static function getId(string $email): int
     {
         Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 
-        return (int)Database::fetch()->userId;
+        return (int)Database::fetch()->userId ?? 0;
     }
 
     public static function doesAccountAlreadyExist(string $email): bool
     {
-        $bind = ['email' => $email];
-
-        Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', $bind);
+        Database::query('SELECT userId FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 
         return Database::rowCount() > 0;
     }
 
-    public static function getPassword(string $email): string
+    public static function getHashedPassword(string $email): string
     {
         Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
 

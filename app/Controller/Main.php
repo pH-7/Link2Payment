@@ -32,7 +32,10 @@ class Main extends Base
         $userId = User::getId();
         $userDetails = UserModel::getDetails($userId);
         $methodName = $this->getPaymentGatewayMethod($userDetails->paymentGateway);
-        $tplVars = ['fullname' => $userDetails->fullname, 'payment_link' => User::$methodName($userDetails->hash)];
+        $tplVars = [
+            'fullname' => $userDetails->fullname,
+            'payment_link' => User::$methodName($userDetails->hash)
+        ];
 
         View::create('home', 'Welcome!', $tplVars);
     }
@@ -44,13 +47,13 @@ class Main extends Base
         if (Input::post('signin')) {
             $email = Input::post('email');
             $password = Input::post('password');
-            $dbPasswordHashed = UserModel::getPassword($email);
+            $dbHashedPassword = UserModel::getHashedPassword($email);
 
-            if (Password::verify($password, $dbPasswordHashed)) {
+            if (Password::verify($password, $dbHashedPassword)) {
                 $userId = UserModel::getId($email);
                 User::setAuth($userId, $email);
 
-                $this->updatePasswordHashIfNeeded($password, $dbPasswordHashed, $userId);
+                $this->updatePasswordHashIfNeeded($password, $dbHashedPassword, $userId);
 
                 redirect('/');
             } else {
@@ -185,7 +188,7 @@ class Main extends Base
         $password2 = Input::post('repeated_password');
 
         if (Input::post('update_password')) {
-            $hashedPassword = UserModel::getPassword($email);
+            $hashedPassword = UserModel::getHashedPassword($email);
             if (Password::verify($currentPassword, $hashedPassword)) {
                 if ($password1 === $password2) {
                     UserModel::updatePassword(Password::hash($password1), User::getId());
@@ -211,8 +214,6 @@ class Main extends Base
 
     /**
      * Make sure that a human fulfil the form (a bot would fulfil "firstname" field as well).
-     *
-     * @return bool
      */
     private function isSpamBot(): bool
     {

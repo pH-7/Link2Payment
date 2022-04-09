@@ -35,13 +35,7 @@ final class Password
         return password_hash($password, self::PWD_ALGORITHM, self::$options);
     }
 
-    /**
-     * @param string|null $password
-     * @param string|null $hash
-     *
-     * @return bool
-     */
-    public static function verify($password, $hash): bool
+    public static function verify(string $password, string $hash): bool
     {
         return password_verify($password, $hash);
     }
