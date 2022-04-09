@@ -1,18 +1,24 @@
+# Dependencies
 vendor
 node_modules
 composer.lock
 composer.phar
+
+# Configuration
 .env
 
 # Log files
 *.log
 *.tmp
 
-# PHPUnit coverage
+# Tests (PHPUnit)
 coverage
+phpunit.xml
+.phpunit.result.cache
 
-# PhpStorm
+# IDE (PHPStorm)
 .idea
+
 
 ## OS ##
 
