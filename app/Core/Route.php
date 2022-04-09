@@ -75,7 +75,7 @@ class Route
         $url = !empty($_GET['uri']) ? '/' . $_GET['uri'] : '/';
 
         if (preg_match("#^$uri$#", $url, $params)) {
-            if (!self::isController($value)) {
+            if (self::isRedirection($value)) {
                 redirect($value);
             } else {
                 if (!self::isHttpMethodValid()) {
@@ -105,9 +105,9 @@ class Route
         }
     }
 
-    private static function isController(string $method): bool
+    private static function isRedirection(string $method): bool
     {
-        return strpos($method, self::SEPARATOR) !== false;
+        return strpos($method, self::SEPARATOR) === false;
     }
 
     private static function isHttpMethodValid(): bool
