@@ -107,7 +107,7 @@ class Route
 
     private static function isHttpMethodValid(): bool
     {
-        return self::$httpMethod !== null && $_SERVER['REQUEST_METHOD'] === self::$httpMethod;
+        return self::$httpMethod === null || $_SERVER['REQUEST_METHOD'] === self::$httpMethod;
     }
 
     private static function getActionParameters(array $params): array
