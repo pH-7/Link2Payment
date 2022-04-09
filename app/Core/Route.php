@@ -77,12 +77,7 @@ class Route
         if (preg_match("#^$uri$#", $url, $params)) {
             if (self::isRedirection($value)) {
                 redirect($value);
-            } else {
-                if (!self::isHttpMethodValid()) {
-                    //throw new InvalidArgumentException(sprintf('HTTP Method Must be %s', self::$httpMethod));
-                    (new BaseController)->notFoundPage();
-                }
-
+            } elseif (self::isHttpMethodValid()) {
                 $split = explode(self::SEPARATOR, $value);
                 $className = self::CONTROLLER_NAMESPACE . $split[0];
                 $method = $split[1];
@@ -112,7 +107,7 @@ class Route
 
     private static function isHttpMethodValid(): bool
     {
-        return self::$httpMethod !== null && $_SERVER['REQUEST_METHOD'] !== self::$httpMethod;
+        return self::$httpMethod !== null && $_SERVER['REQUEST_METHOD'] === self::$httpMethod;
     }
 
     private static function getActionParameters(array $params): array
