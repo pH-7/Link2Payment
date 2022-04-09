@@ -8,6 +8,11 @@ Psst! It now works also with PayPal! Get easier your PayPal Payment Link than ge
 
 The project is based on a homemade lightweight PHP framework (ideal for very small web apps). Feel free to use it if you like it :smiley:
 
+- [Requirements](#requirements)
+- [Setting Up](#setting-up)
+- [Author/Info](#the-author)
+- [License](#license)
+
 ![Payment2Link](screenshots/Stripe-Payment-Link-Link2Payment.png)
 
 
@@ -31,7 +36,7 @@ I'm [Pierre-Henry Soria](https://ph7.me). A **super passionate** Belgian **softw
 
 ️☕️ Are you enjoying my work? **[Offer me a coffee](https://ko-fi.com/phenry)** - and boost the software development at the same time! 💪
 
-[![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay "Follow Me on Twitter") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "My GitHub")
+[![@phenrysay](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/phenrysay "Follow Me on Twitter") [![pH-7](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pH-7 "Follow Me on GitHub")
 
 
 ## Project URL
