@@ -78,7 +78,7 @@ class Route
             if (!self::isController($value)) {
                 redirect($value);
             } else {
-                if (self::$httpMethod !== null && $_SERVER['REQUEST_METHOD'] !== self::$httpMethod) {
+                if (!self::isHttpMethodValid()) {
                     //throw new InvalidArgumentException(sprintf('HTTP Method Must be %s', self::$httpMethod));
                     (new BaseController)->notFoundPage();
                 }
@@ -108,6 +108,11 @@ class Route
     private static function isController(string $method): bool
     {
         return strpos($method, self::SEPARATOR) !== false;
+    }
+
+    private static function isHttpMethodValid(): bool
+    {
+        return self::$httpMethod !== null && $_SERVER['REQUEST_METHOD'] !== self::$httpMethod;
     }
 
     private static function getActionParameters(array $params): array
