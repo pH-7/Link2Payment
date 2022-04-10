@@ -31,7 +31,11 @@ class Database
     public static function connect(array $dbDetails = []): void
     {
         try {
-            static::$pdo = new PDO('mysql:host=' . $dbDetails['dbHost'] . ';dbname=' . $dbDetails['dbName'], $dbDetails['dbUser'], $dbDetails['dbPass']);
+            static::$pdo = new PDO(
+                'mysql:host=' . $dbDetails['dbHost'] . ';dbname=' . $dbDetails['dbName'],
+                $dbDetails['dbUser'],
+                $dbDetails['dbPass']
+            );
             static::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $error) {
             exit('<h1>An unexpected database error occured.</h1>');
