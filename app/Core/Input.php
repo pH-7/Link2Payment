@@ -37,7 +37,7 @@ class Input
      *
      * @return string The user agent
      */
-    public static function userAgent()
+    public static function userAgent(): string
     {
         return static::clean($_SERVER['HTTP_USER_AGENT']);
     }
@@ -49,7 +49,7 @@ class Input
      *
      * @return string|bool
      */
-    public static function post($key)
+    public static function post(string $key)
     {
         return isset($_POST[$key]) ? static::clean($_POST[$key]) : false;
     }
@@ -61,7 +61,7 @@ class Input
      *
      * @return string|bool
      */
-    public static function get($key)
+    public static function get(string $key)
     {
         return isset($_GET[$key]) ? static::clean($_GET[$key]) : false;
     }
