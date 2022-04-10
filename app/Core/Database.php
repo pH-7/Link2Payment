@@ -22,13 +22,6 @@ class Database
     private static $stmt = null;
 
     /**
-     * It's a static class, to prevent instantiation of the class
-     */
-    private function __construct() {}
-    private function __clone() {}
-
-
-    /**
      * Establishes a connection.
      *
      * @param array $dbDetails The database details
@@ -101,4 +94,10 @@ class Database
     {
         return static::$stmt->fetchAll(PDO::FETCH_OBJ) ?? null;
     }
+
+    /**
+     * It's a static class, to prevent instantiation of the class
+     */
+    private function __construct() {}
+    private function __clone() {}
 }
