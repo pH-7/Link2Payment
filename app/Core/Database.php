@@ -35,7 +35,7 @@ class Database
      *
      * @return void
      */
-    public static function connect(array $dbDetails = array()): void
+    public static function connect(array $dbDetails = []): void
     {
         try {
             static::$pdo = new PDO('mysql:host=' . $dbDetails['dbHost'] . ';dbname=' . $dbDetails['dbName'], $dbDetails['dbUser'], $dbDetails['dbPass']);
@@ -54,7 +54,7 @@ class Database
      *
      * @return void
      */
-    public static function query($sql, array $binds = array(), bool $execute = true): void
+    public static function query($sql, array $binds = [], bool $execute = true): void
     {
         static::$stmt = static::$pdo->prepare($sql);
 
