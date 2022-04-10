@@ -16,7 +16,7 @@ CREATE TABLE user (
   UNIQUE KEY (hash),
   UNIQUE KEY (email),
   PRIMARY KEY (userId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE payment (
