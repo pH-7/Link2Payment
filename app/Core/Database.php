@@ -80,11 +80,6 @@ class Database
         return static::$stmt->fetch(PDO::FETCH_OBJ);
     }
 
-    public static function quote(string $string): string
-    {
-        return static::$pdo->quote($string);
-    }
-
     /**
      * Returns all rows
      *
@@ -93,6 +88,11 @@ class Database
     public static function fetchAll(): ?array
     {
         return static::$stmt->fetchAll(PDO::FETCH_OBJ) ?? null;
+    }
+
+    public static function quote(string $string): string
+    {
+        return static::$pdo->quote($string);
     }
 
     /**
