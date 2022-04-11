@@ -24,7 +24,7 @@ class User
 
     public static function isLoggedIn(): bool
     {
-        return (bool)(Session::get('userId') && Session::get('email'));
+        return Session::exist('userId');
     }
 
     public static function getId(): int

@@ -37,9 +37,15 @@ class Session
     }
 
     /**
+     * Checks if a specific session exists or not.
+     */
+    public static function exist(string $key): bool
+    {
+        return self::get($key) !== false;
+    }
+
+    /**
      * Destroys the session.
-     *
-     * @return void
      */
     public static function destroy(): void
     {
