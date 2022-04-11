@@ -110,7 +110,9 @@ class Main extends Base
 
                 redirect('/');
             } else {
-                $data = [View::ERROR_MSG_KEY => 'An account with this email address already exists. Please use another email address if you want to create another payment link.'];
+                $data = [
+                    View::ERROR_MSG_KEY => 'An account with this email address already exists. Please use another email address if you want to create another payment link.'
+                ];
             }
         }
 
