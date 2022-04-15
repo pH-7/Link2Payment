@@ -49,9 +49,9 @@ class User
         return Database::rowCount() > 0;
     }
 
-    public static function getHashedPassword(string $email): string
+    public static function getHashedPassword(int $userId): string
     {
-        Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE email = :email LIMIT 1', ['email' => $email]);
+        Database::query('SELECT password FROM ' . self::TABLE_NAME . ' WHERE userId = :userId LIMIT 1', ['userId' => $userId]);
 
         return Database::fetch()->password ?? '';
     }

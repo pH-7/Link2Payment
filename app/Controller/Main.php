@@ -46,11 +46,11 @@ class Main extends Base
 
         if (Input::post('signin')) {
             $email = Input::post('email');
+            $userId = UserModel::getId($email);
             $password = Input::post('password');
-            $dbHashedPassword = UserModel::getHashedPassword($email);
+            $dbHashedPassword = UserModel::getHashedPassword($userId);
 
             if (Password::verify($password, $dbHashedPassword)) {
-                $userId = UserModel::getId($email);
                 User::setAuth($userId, $email);
 
                 $this->updatePasswordHashIfNeeded($password, $dbHashedPassword, $userId);
@@ -184,13 +184,13 @@ class Main extends Base
     {
         $data = [];
 
-        $email = User::getEmail();
+        $userId = User::getId();
         $currentPassword = Input::post('current_password');
         $password1 = Input::post('new_password');
         $password2 = Input::post('repeated_password');
 
         if (Input::post('update_password')) {
-            $hashedPassword = UserModel::getHashedPassword($email);
+            $hashedPassword = UserModel::getHashedPassword($userId);
             if (Password::verify($currentPassword, $hashedPassword)) {
                 if ($password1 === $password2) {
                     UserModel::updatePassword(Password::hash($password1), User::getId());
