@@ -1,6 +1,8 @@
 <?php namespace PH7App; ?>
 
-<h3 class="center"><?= escape($item_name) ?> - <?= escape($business_name) ?></h3>
+<h3 class="center">
+    <?= escape($item_name) ?> - <?= escape($business_name) ?>
+</h3>
 
 <div class="center">
     <?php $form = new \AdamWathan\Form\FormBuilder; ?>
