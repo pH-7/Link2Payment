@@ -15,6 +15,11 @@ use PH7App\Model\Payment as PaymentModel;
 use stdClass;
 use Stripe\Charge;
 use Stripe\Stripe;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Transport\SendmailTransport;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email as EmailMessage;
 
 class Payment extends Base
 {
@@ -65,8 +70,12 @@ class Payment extends Base
                 ]
             );
 
-            $this->sendEmailToSeller(['name' => $dbData->fullname, 'email' => $dbData->email]);
-            $this->sendEmailToBuyer(['email' => $stripeEmail]);
+            try {
+                $this->sendEmailToSeller(['name' => $dbData->fullname, 'email' => $dbData->email]);
+                $this->sendEmailToBuyer(['email' => $stripeEmail]);
+            } catch (TransportExceptionInterface $error) {
+                error_log('Error while sending email with Symfony Mailer. ' . $error->getMessage());
+            }
 
             View::create('payment-done', 'Payment Done', ['seller_email' => $dbData->email]);
         } catch (\Stripe\Error\Card $except) {
@@ -91,25 +100,24 @@ class Payment extends Base
     }
 
     /**
-     * @param array $sellerDetails
-     *
-     * @return int The number of successful recipients. Can be 0 which indicates failure.
+     * @throws TransportExceptionInterface
      */
-    private function sendEmailToSeller(array $sellerDetails): int
+    private function sendEmailToSeller(array $sellerDetails): void
     {
         $email = $_ENV['ADMIN_EMAIL'];
         $textMessage = sprintf("Hi %s!\r\n\r\n Congrats! You receive a new payment, made with %s", $sellerDetails['name'], site_name());
 
-        $transport = \Swift_MailTransport::newInstance();
-        $mailer = \Swift_Mailer::newInstance($transport);
+        $transport = new SendmailTransport();
+        $mailer = new Mailer($transport);
 
-        // Create a message
-        $message = (new \Swift_Message('Wonderful Subject'))
-            ->setFrom([$email => site_name()])
-            ->setTo([$sellerDetails['email'] => $sellerDetails['name']])
-            ->setBody($textMessage);
+        $message = new EmailMessage();
+        $message->from(new Address($email, site_name()));
+        $message->to(new Address($email, site_name()));
+        $message->subject('Payment Received');
+        $message->priority(EmailMessage::PRIORITY_HIGHEST);
+        $message->text($textMessage);
 
-        return $mailer->send($message);
+        $mailer->send($message);
     }
 
     /**
