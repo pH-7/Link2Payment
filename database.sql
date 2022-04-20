@@ -32,4 +32,4 @@ CREATE TABLE payment (
   isBitcoin tinyint(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (userId),
   FOREIGN KEY (userId) REFERENCES user(userId)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
