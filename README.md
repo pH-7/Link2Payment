@@ -27,8 +27,8 @@ The project is based on a homemade lightweight PHP framework (ideal for very sma
 
 * From a command line opened in the project, run `composer install` and `npm install` to install the project dependencies.
 * Create a MySQL database and import `database.sql` file.
-* Rename `.env.example` to `.env` and edit SITE_URL and DB details.
-
+* Rename `.env.example` to `.env` and edit `SITE_URL`, `ADMIN_EMAIL`, and DB details.
+  * You can also change the available currencies by editing `app/config/currencies.php`
 
 ## The Author
 
