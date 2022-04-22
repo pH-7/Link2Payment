@@ -56,9 +56,14 @@ class Route
         return empty($_GET['uri']);
     }
 
+    public static function doesContain(string $urlSegment): bool
+    {
+        return !empty($_GET['uri']) && strpos($_GET['uri'], $urlSegment) !== false;
+    }
+
     public static function isStripePage(): bool
     {
-        return !empty($_GET['uri']) && strpos($_GET['uri'], 'stripe') !== false;
+        return self::doesContain('stripe');
     }
 
     /**

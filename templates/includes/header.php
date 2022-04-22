@@ -31,12 +31,32 @@
       <a id="logo-container" href="<?= site_url() ?>" class="brand-logo"><?= $_ENV['SITE_NAME'] ?></a>
       <ul id="nav-mobile" class="right">
         <?php if (!Core\User::isLoggedIn()): ?>
-          <li><a href="<?= site_url('signup') ?>" class="red-text text-lighten-3 bold underline">Sign Up</a></li>
-          <li><a href="<?= site_url('signin') ?>">Sign In</a></li>
+          <li>
+            <a <?= Core\Route::doesContain('signup') ? 'class="active"' : '' ?> href="<?= site_url('signup') ?>" class="red-text text-lighten-3 bold underline">
+              Sign Up
+            </a>
+          </li>
+          <li>
+            <a <?= Core\Route::doesContain('signin') ? 'class="active"' : '' ?> href="<?= site_url('signin') ?>">
+              Sign In
+            </a>
+          </li>
         <?php else: ?>
-          <li><a href="<?= site_url('edit') ?>">Edit Details</a></li>
-          <li><a href="<?= site_url('password') ?>">Change Password</a></li>
-          <li><a href="<?= site_url('signout') ?>">Sign Out</a></li>
+          <li>
+            <a <?= Core\Route::doesContain('edit') ? 'class="active"' : '' ?> href="<?= site_url('edit') ?>">
+              Edit Details
+            </a>
+          </li>
+          <li>
+            <a <?= Core\Route::doesContain('password') ? 'class="active"' : '' ?> href="<?= site_url('password') ?>">
+              Change Password
+            </a>
+          </li>
+          <li>
+            <a href="<?= site_url('signout') ?>">
+              Sign Out
+            </a>
+          </li>
         <?php endif ?>
       </ul>
     </div>
