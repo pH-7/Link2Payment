@@ -10,7 +10,7 @@ namespace PH7App;
 require 'app/Bootstrap.php';
 
 $oApp = new Bootstrap;
-$oApp->initializeDebugging();
+$oApp->initializeDebuggingMode();
 $oApp->initializePHPSession();
 $oApp->setTimezoneIfNotSet();
 

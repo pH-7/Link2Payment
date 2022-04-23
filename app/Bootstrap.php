@@ -46,7 +46,7 @@ final class Bootstrap
         }
     }
 
-    public function initializeDebugging(): void
+    public function initializeDebuggingMode(): void
     {
         // First, convert "true/false" string from phpdotenv to boolean
         $debugMode = filter_var($_ENV['DEBUG_MODE'], FILTER_VALIDATE_BOOLEAN);
