@@ -74,8 +74,6 @@ final class Bootstrap
 
     /**
      * Set a default timezone if it is not already configured in environment.
-     *
-     * @return void
      */
     public function setTimezoneIfNotSet(): void
     {
